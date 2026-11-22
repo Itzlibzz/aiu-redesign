@@ -1,954 +1,1002 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>American Imperial University | Shaping Global Leaders</title>
-    
-    <!-- Google Fonts: Playfair Display (Authoritative Academic Serif) & Plus Jakarta Sans (Clean Modern UI) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Tailwind Custom Configuration -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        navy: {
-                            950: '#060E1A',
-                            900: '#0B192C',
-                            800: '#132743',
-                            700: '#1E3A5F',
-                        },
-                        gold: {
-                            500: '#C59B27',
-                            600: '#A8821D',
-                            100: '#FBF6E9',
-                        },
-                        slate: {
-                            50: '#F8FAFC',
-                            200: '#E2E8F0',
-                        }
-                    },
-                    fontFamily: {
-                        serif: ['"Playfair Display"', 'Georgia', 'serif'],
-                        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>American Imperial University — Degrees &amp; Academic Programs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #faf9f6;
+      --surface: #ffffff;
+      --surface-alt: #f2efe9;
+      --ink: #172133;
+      --muted: #556070;
+      --accent: #1d3557;
+      --accent-soft: #e8eef5;
+      --gold: #9a6b26;
+      --border: #e3dfd7;
+      --radius: 12px;
+      --max: 1160px;
+    }
 
-    <style>
-        /* Subtle custom scrollbars and smooth transitions */
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #F8FAFC;
-            color: #0B192C;
-            overflow-x: hidden;
-        }
-        
-        .font-editorial {
-            font-family: 'Playfair Display', Georgia, serif;
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        /* Crisp glassmorphism header */
-        .glass-header {
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
+    html {
+      scroll-behavior: smooth;
+    }
 
-        /* Subtle editorial hover lift */
-        .editorial-card {
-            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
-        }
-        .editorial-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 25px -5px rgba(11, 25, 44, 0.06), 0 8px 10px -6px rgba(11, 25, 44, 0.04);
-            border-color: #C59B27;
-        }
+    body {
+      font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
 
-        /* Tab transition fade */
-        .fade-in {
-            animation: fadeIn 0.35s ease-out forwards;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(6px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
+    h1, h2, h3, .serif {
+      font-family: "Newsreader", Georgia, serif;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 1.18;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .container {
+      width: min(100% - 2.5rem, var(--max));
+      margin-inline: auto;
+    }
+
+    /* Top bar */
+    .topbar {
+      background: var(--ink);
+      color: #e6ebf2;
+      font-size: 0.8125rem;
+      padding: 0.55rem 0;
+    }
+
+    .topbar-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    .topbar-links {
+      display: flex;
+      gap: 1.25rem;
+      opacity: 0.9;
+    }
+
+    .topbar-links a:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(250, 249, 246, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 74px;
+      gap: 1.5rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      background: var(--accent);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-family: "Newsreader", serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .brand-text span:first-child {
+      display: block;
+      font-weight: 600;
+      font-size: 0.95rem;
+      line-height: 1.15;
+    }
+
+    .brand-text span:last-child {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    nav a:hover {
+      color: var(--ink);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.72rem 1.25rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: #142640;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border-color: var(--border);
+      color: var(--ink);
+    }
+
+    .btn-ghost:hover {
+      background: var(--surface-alt);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.5rem 0.75rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+      color: var(--ink);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 4.25rem 0 3.5rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.3rem, 4.2vw, 3.45rem);
+      margin-bottom: 1.15rem;
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 54ch;
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin-bottom: 2rem;
+    }
+
+    .hero-notes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .hero-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 14px 36px rgba(23, 33, 51, 0.06);
+    }
+
+    .hero-card img {
+      width: 100%;
+      height: 310px;
+      object-fit: cover;
+    }
+
+    .hero-card-body {
+      padding: 1.25rem 1.4rem;
+    }
+
+    .hero-card-body p:first-child {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .hero-card-body p:last-child {
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    /* Highlights strip */
+    .highlights {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 2rem 0;
+    }
+
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.75rem;
+    }
+
+    .stat-num {
+      font-family: "Newsreader", serif;
+      font-size: 1.95rem;
+      font-weight: 600;
+      color: var(--accent);
+      line-height: 1.1;
+      margin-bottom: 0.25rem;
+    }
+
+    .stat-label {
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    /* Sections */
+    section.block {
+      padding: 4.5rem 0;
+    }
+
+    .section-head {
+      max-width: 62ch;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-head h2 {
+      font-size: clamp(1.85rem, 3vw, 2.5rem);
+      margin-bottom: 0.65rem;
+    }
+
+    .section-head p {
+      color: var(--muted);
+    }
+
+    /* Filter bar */
+    .filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .filter-btn {
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--muted);
+      font-size: 0.86rem;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .program-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.6rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1.25rem;
+    }
+
+    .program-meta {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.45rem;
+    }
+
+    .program-card h3 {
+      font-size: 1.35rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .program-card p {
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    .program-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
+
+    /* Two-column feature (Leadership & Accreditation) */
+    .split-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+    }
+
+    .quote-mark {
+      font-family: "Newsreader", serif;
+      font-size: 2.5rem;
+      line-height: 1;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .quote-text {
+      font-size: 1rem;
+      color: var(--ink);
+      margin-bottom: 1.25rem;
+    }
+
+    .leader-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .leader-role {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .info-list {
+      list-style: none;
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .info-list li {
+      padding: 1rem 1.15rem;
+      background: var(--surface-alt);
+      border-radius: 8px;
+      font-size: 0.92rem;
+    }
+
+    .info-list strong {
+      display: block;
+      margin-bottom: 0.2rem;
+      color: var(--ink);
+    }
+
+    .info-list span {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    /* Support & Admissions */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .pillar {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+    }
+
+    .pillar h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .pillar p {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--ink);
+      color: #d7dee8;
+      padding: 3.5rem 0 2rem;
+      margin-top: 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr;
+      gap: 2.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    footer h4 {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #fff;
+      margin-bottom: 0.9rem;
+    }
+
+    footer ul {
+      list-style: none;
+      display: grid;
+      gap: 0.5rem;
+      font-size: 0.88rem;
+      color: #bcc6d4;
+    }
+
+    footer a:hover {
+      color: #fff;
+    }
+
+    .footer-bottom {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-top: 1.5rem;
+      font-size: 0.82rem;
+      color: #9aa6b8;
+    }
+
+    /* Drawer */
+    .drawer-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.45);
+      display: none;
+      z-index: 50;
+    }
+
+    .drawer-backdrop.open {
+      display: block;
+    }
+
+    .drawer {
+      position: fixed;
+      top: 0;
+      right: -420px;
+      width: min(100%, 420px);
+      height: 100%;
+      background: var(--surface);
+      z-index: 60;
+      padding: 2rem 1.6rem;
+      transition: right 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: -12px 0 32px rgba(0, 0, 0, 0.14);
+    }
+
+    .drawer.open {
+      right: 0;
+    }
+
+    .drawer h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .drawer p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .field {
+      margin-bottom: 0.95rem;
+    }
+
+    .field label {
+      display: block;
+      font-size: 0.83rem;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+
+    .field input,
+    .field select {
+      width: 100%;
+      padding: 0.65rem 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.9rem;
+    }
+
+    .drawer-top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .close-btn {
+      background: var(--surface-alt);
+      border: none;
+      border-radius: 6px;
+      padding: 0.35rem 0.65rem;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .confirm-msg {
+      display: none;
+      margin-top: 0.85rem;
+      padding: 0.75rem;
+      border-radius: 8px;
+      background: var(--accent-soft);
+      color: var(--ink);
+      font-size: 0.86rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero-grid,
+      .split-grid,
+      .programs-grid,
+      .pillars-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .highlights-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      nav,
+      .nav-actions {
+        display: none;
+      }
+
+      nav.mobile-open,
+      .nav-actions.mobile-open {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        padding: 1rem 0;
+      }
+
+      .nav-wrap {
+        flex-wrap: wrap;
+      }
+
+      .menu-toggle {
+        display: inline-block;
+      }
+    }
+  </style>
 </head>
-<body class="antialiased selection:bg-gold-500 selection:text-white">
+<body>
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <span>Where Boundaries Dissolve, Excellence Evolves.</span>
+      <div class="topbar-links">
+        <a href="#programs">Programs</a>
+        <a href="#admissions">Admissions</a>
+        <a href="#contact">Contact Us</a>
+      </div>
+    </div>
+  </div>
 
-    <!-- 1. MINIMAL TOP UTILITY BAR -->
-    <div class="bg-navy-900 text-slate-300 text-xs tracking-wide border-b border-navy-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-9 flex items-center justify-between">
-            <div class="hidden sm:flex items-center space-x-2 text-slate-400">
-                <span class="inline-block w-1.5 h-1.5 rounded-full bg-gold-500"></span>
-                <span>Fall 2027 Undergraduate &amp; Graduate Admissions Now Open</span>
-            </div>
-            <div class="flex items-center space-x-5 ml-auto">
-                <a href="#portal" onclick="openDrawer('Student Portal Login')" class="hover:text-white transition-colors">Student Portal</a>
-                <a href="#alumni" onclick="openDrawer('Alumni Network')" class="hover:text-white transition-colors">Alumni</a>
-                <a href="#directory" onclick="openDrawer('Faculty Directory')" class="hover:text-white transition-colors">Directory</a>
-                <a href="#contact" onclick="openDrawer('Contact Admissions')" class="text-gold-500 hover:text-amber-300 font-medium transition-colors">Contact</a>
-            </div>
+  <header>
+    <div class="container nav-wrap">
+      <a href="#" class="brand">
+        <div class="brand-mark">AIU</div>
+        <div class="brand-text">
+          <span>American Imperial</span>
+          <span>University</span>
         </div>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Toggle navigation">Menu</button>
+
+      <nav id="mainNav">
+        <a href="#programs">Programs</a>
+        <a href="#about">About Us</a>
+        <a href="#support">Student Support</a>
+        <a href="#admissions">Admissions</a>
+        <a href="#contact">Contact Us</a>
+      </nav>
+
+      <div class="nav-actions" id="navActions">
+        <button class="btn btn-ghost" type="button" data-open-drawer>Request Info</button>
+        <a class="btn btn-primary" href="#admissions">Apply Now</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Florida Higher Education &bull; Flexible Online &amp; Career Degrees</span>
+          <h1>Empowering Your Academic Journey</h1>
+          <p>
+            From practical curriculum to faculty mentorship, American Imperial University is built for working professionals and ambitious learners aiming for leadership and career growth.
+          </p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#programs">Explore Programs</a>
+            <button class="btn btn-ghost" type="button" data-open-drawer>Speak with Admissions</button>
+          </div>
+          <div class="hero-notes">
+            <span>20+ Years of Leadership &amp; Experience</span>
+            <span>QAHE Accredited &bull; ELETS Award Winner</span>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <img
+            src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1000&q=80"
+            alt="Graduate students collaborating on coursework"
+          />
+          <div class="hero-card-body">
+            <p>Doctor &amp; Master Pathways</p>
+            <p>Structured credit hours and flexible pacing designed around real-world schedules.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="highlights" aria-label="Key Highlights">
+      <div class="container highlights-grid">
+        <div>
+          <div class="stat-num">20+ Yrs</div>
+          <div class="stat-label">Leadership &amp; Educational Expertise</div>
+        </div>
+        <div>
+          <div class="stat-num">65 Credits</div>
+          <div class="stat-label">DBA Strategic Leadership (36 mos / fast-track)</div>
+        </div>
+        <div>
+          <div class="stat-num">41 Credits</div>
+          <div class="stat-label">MBA Int. Business &amp; MS Data Analytics (18 mos)</div>
+        </div>
+        <div>
+          <div class="stat-num">#1 State</div>
+          <div class="stat-label">Florida Education Rankings (US News / Heritage)</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="programs">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Academic Offerings</span>
+          <h2>Featured Degree Programs</h2>
+          <p>Browse core doctoral, master’s, and business tracks offered by American Imperial University.</p>
+        </div>
+
+        <div class="filter-row" role="tablist" aria-label="Filter programs">
+          <button class="filter-btn active" type="button" data-filter="all">All Programs</button>
+          <button class="filter-btn" type="button" data-filter="doctoral">Doctoral</button>
+          <button class="filter-btn" type="button" data-filter="business">Business &amp; Leadership</button>
+          <button class="filter-btn" type="button" data-filter="analytics">Analytics</button>
+        </div>
+
+        <div class="programs-grid" id="programsGrid">
+          <article class="program-card" data-category="doctoral business">
+            <div>
+              <div class="program-meta">Doctoral &bull; Strategic Leadership</div>
+              <h3>Doctor of Business Administration in Strategic Leadership</h3>
+              <p>Designed for senior professionals and leaders bridging academic research with executive decision-making.</p>
+            </div>
+            <div class="program-footer">
+              <span>65 US Credit Hours</span>
+              <span>36 Months (Fast-Track Option)</span>
+            </div>
+          </article>
+
+          <article class="program-card" data-category="business">
+            <div>
+              <div class="program-meta">Master’s &bull; International Business</div>
+              <h3>Master of Business Administration in International Business</h3>
+              <p>Focused on global strategy, cross-border operations, and management skills for international markets.</p>
+            </div>
+            <div class="program-footer">
+              <span>41 US Credit Hours</span>
+              <span>18 Months</span>
+            </div>
+          </article>
+
+          <article class="program-card" data-category="analytics">
+            <div>
+              <div class="program-meta">Master’s &bull; Data Analytics</div>
+              <h3>Master of Science in Data Analytics</h3>
+              <p>Builds practical analytical and data-driven decision skills for modern organizations and high-growth roles.</p>
+            </div>
+            <div class="program-footer">
+              <span>41 US Credit Hours</span>
+              <span>18 Months</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="about">
+      <div class="container split-grid">
+        <div class="panel">
+          <span class="eyebrow">Message from Leadership</span>
+          <div class="quote-mark">&ldquo;</div>
+          <p class="quote-text">
+            Welcome to American Imperial University. Our focus is providing accessible American higher education programs that help ambitious learners grow professionally and make a lasting impact in their fields.
+          </p>
+          <div class="leader-name">Michael Santoro</div>
+          <div class="leader-role">Campus President, American Imperial University</div>
+        </div>
+
+        <div class="panel">
+          <span class="eyebrow">Recognition &amp; Standards</span>
+          <h3>Accreditation &amp; Awards</h3>
+          <ul class="info-list">
+            <li>
+              <strong>QAHE Accreditation</strong>
+              <span>Recognized institutional quality assurance standards.</span>
+            </li>
+            <li>
+              <strong>American Accreditation Association</strong>
+              <span>Member recognition and institutional alignment.</span>
+            </li>
+            <li>
+              <strong>28th ELETS World Education Award</strong>
+              <span>Recognized for Best Online Degree Provider.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="support">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Learner Experience</span>
+          <h2>Student Support &amp; Admissions</h2>
+          <p>Clear guidance from your first inquiry through graduation, backed by dedicated student services.</p>
+        </div>
+
+        <div class="pillars-grid" id="admissions">
+          <div class="pillar">
+            <h3>1. Program &amp; Admission Guidance</h3>
+            <p>Review entry requirements and connect with admissions advisors to pick the right degree track.</p>
+          </div>
+          <div class="pillar">
+            <h3>2. Faculty &amp; Academic Support</h3>
+            <p>Get accessible faculty guidance, mentorship, and career counseling throughout your studies.</p>
+          </div>
+          <div class="pillar">
+            <h3>3. Flexible Learning Format</h3>
+            <p>Study around work and life commitments with structured coursework and digital resources.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>American Imperial University</h4>
+          <p style="font-size: 0.88rem; color: #bcc6d4; max-width: 34ch;">
+            Where Boundaries Dissolve, Excellence Evolves. Supporting learners across doctoral, master’s, and career-focused programs.
+          </p>
+        </div>
+
+        <div>
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#programs">Programs</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#support">Student Support</a></li>
+            <li><a href="#admissions">Admissions</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Contact Information</h4>
+          <ul>
+            <li>2100 S. Hiawassee Rd., Orlando, Florida 32835</li>
+            <li>Phone: +1 (407) 270-3706</li>
+            <li>Email: admissions@americanimperialuniversity.com</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 American Imperial University. All rights reserved.</span>
+        <span>Orlando, Florida</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <aside class="drawer" id="infoDrawer" aria-label="Request Information">
+    <div>
+      <div class="drawer-top-bar">
+        <span class="eyebrow" style="margin: 0;">Admissions Inquiry</span>
+        <button class="close-btn" id="closeDrawer" type="button">Close</button>
+      </div>
+      <h3>Request Program Details</h3>
+      <p>Share your details to view program information or connect with admissions.</p>
+
+      <form id="inquiryForm">
+        <div class="field">
+          <label for="fullName">Full Name</label>
+          <input id="fullName" type="text" placeholder="Your name" required />
+        </div>
+        <div class="field">
+          <label for="emailInput">Email Address</label>
+          <input id="emailInput" type="email" placeholder="you@example.com" required />
+        </div>
+        <div class="field">
+          <label for="programSelect">Program of Interest</label>
+          <select id="programSelect">
+            <option>DBA in Strategic Leadership (65 Credits)</option>
+            <option>MBA in International Business (41 Credits)</option>
+            <option>MS in Data Analytics (41 Credits)</option>
+          </select>
+        </div>
+        <button class="btn btn-primary" style="width: 100%;" type="submit">Submit Request</button>
+      </form>
+
+      <div class="confirm-msg" id="confirmMsg">
+        Request preview noted. For direct assistance, reach out to admissions@americanimperialuniversity.com or call +1 (407) 270-3706.
+      </div>
     </div>
 
-    <!-- STICKY GLASSMORPHISM NAVIGATION -->
-    <header class="sticky top-0 z-40 glass-header border-b border-slate-200/80">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                
-                <!-- Custom SVG Crest & Wordmark -->
-                <a href="#" class="flex items-center space-x-3.5 group focus:outline-none">
-                    <div class="w-11 h-11 rounded-lg bg-navy-900 flex items-center justify-center border border-gold-500/40 shadow-sm group-hover:border-gold-500 transition-colors">
-                        <svg class="w-6 h-6 text-gold-500" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Academic Shield & Pillar Crest -->
-                            <path d="M16 3L5 7.5V15.5C5 22.4 9.7 28.6 16 30C22.3 28.6 27 22.4 27 15.5V7.5L16 3Z" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/>
-                            <path d="M11 12H21M16 12V23M12.5 15.5V21.5M19.5 15.5V21.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                            <circle cx="16" cy="8.5" r="1.25" fill="currentColor"/>
-                        </svg>
-                    </div>
-                    <div class="flex flex-col">
-                        <span class="font-editorial text-lg sm:text-xl font-bold tracking-tight text-navy-900 leading-none">
-                            American Imperial
-                        </span>
-                        <span class="text-[11px] font-semibold uppercase tracking-[0.22em] text-gold-600 mt-1">
-                            University
-                        </span>
-                    </div>
-                </a>
+    <div style="font-size: 0.8rem; color: var(--muted);">
+      2100 S. Hiawassee Rd., Orlando, FL 32835 &bull; +1 (407) 270-3706
+    </div>
+  </aside>
 
-                <!-- Desktop Navigation Links -->
-                <nav class="hidden lg:flex items-center space-x-9 text-sm font-medium text-navy-800">
-                    <a href="#academics" class="hover:text-gold-600 transition-colors py-2">Academics</a>
-                    <a href="#admissions" class="hover:text-gold-600 transition-colors py-2">Admissions</a>
-                    <a href="#why-aiu" class="hover:text-gold-600 transition-colors py-2">Why AIU</a>
-                    <a href="#research" class="hover:text-gold-600 transition-colors py-2">Research</a>
-                    <a href="#news" class="hover:text-gold-600 transition-colors py-2">Campus &amp; News</a>
-                </nav>
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const mainNav = document.getElementById("mainNav");
+    const navActions = document.getElementById("navActions");
 
-                <!-- Desktop CTA + Mobile Hamburger -->
-                <div class="flex items-center space-x-4">
-                    <button onclick="openDrawer('Apply to American Imperial University')" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-navy-900 text-white text-sm font-semibold hover:bg-navy-800 border border-transparent hover:border-gold-500/50 transition-all shadow-sm">
-                        Apply Now
-                    </button>
+    menuToggle.addEventListener("click", () => {
+      mainNav.classList.toggle("mobile-open");
+      navActions.classList.toggle("mobile-open");
+    });
 
-                    <!-- Mobile Menu Button -->
-                    <button id="mobile-menu-btn" aria-label="Toggle Menu" class="lg:hidden p-2.5 rounded-lg text-navy-900 hover:bg-slate-100 focus:outline-none">
-                        <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 6h16M4 12h16M4 18h16"/>
-                        </svg>
-                        <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M6 18L18 6M6 6l12 12"/>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const programCards = document.querySelectorAll(".program-card");
 
-        <!-- Mobile Dropdown Navigation -->
-        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 space-y-2 shadow-lg">
-            <a href="#academics" onclick="closeMobileMenu()" class="block px-3 py-2.5 rounded-lg text-base font-medium text-navy-900 hover:bg-slate-50">Academics</a>
-            <a href="#admissions" onclick="closeMobileMenu()" class="block px-3 py-2.5 rounded-lg text-base font-medium text-navy-900 hover:bg-slate-50">Admissions</a>
-            <a href="#why-aiu" onclick="closeMobileMenu()" class="block px-3 py-2.5 rounded-lg text-base font-medium text-navy-900 hover:bg-slate-50">Why AIU</a>
-            <a href="#research" onclick="closeMobileMenu()" class="block px-3 py-2.5 rounded-lg text-base font-medium text-navy-900 hover:bg-slate-50">Research</a>
-            <a href="#news" onclick="closeMobileMenu()" class="block px-3 py-2.5 rounded-lg text-base font-medium text-navy-900 hover:bg-slate-50">Campus &amp; News</a>
-            <div class="pt-3 border-t border-slate-100">
-                <button onclick="closeMobileMenu(); openDrawer('Apply to American Imperial University')" class="w-full py-3 rounded-lg bg-navy-900 text-white text-sm font-semibold">
-                    Apply Now
-                </button>
-            </div>
-        </div>
-    </header>
+    filterButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        filterButtons.forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
 
-    <!-- 2. EDITORIAL HERO SECTION -->
-    <section class="relative bg-white overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-28 border-b border-slate-200">
-        <!-- Subtle architectural background accent -->
-        <div class="absolute inset-y-0 right-0 w-full lg:w-5/12 bg-slate-50/70 -z-10 border-l border-slate-100"></div>
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-                
-                <!-- Left Editorial Copy (7 cols) -->
-                <div class="lg:col-span-7 space-y-8">
-                    <div class="inline-flex items-center space-x-2.5 px-3.5 py-1.5 rounded-full bg-gold-100 border border-gold-500/30 text-navy-900 text-xs font-semibold tracking-wider uppercase">
-                        <span class="w-1.5 h-1.5 rounded-full bg-gold-500"></span>
-                        <span>Accredited Global Higher Education</span>
-                    </div>
-
-                    <h1 class="font-editorial text-4xl sm:text-5xl lg:text-[3.5rem] font-bold text-navy-900 leading-[1.12] tracking-tight">
-                        Shaping Global Leaders Through Rigorous Inquiry &amp; Innovation
-                    </h1>
-
-                    <p class="text-lg sm:text-xl text-slate-600 leading-relaxed max-w-2xl font-normal">
-                        American Imperial University unites classical academic rigor with forward-looking research across accredited undergraduate, graduate, and executive leadership programs.
-                    </p>
-
-                    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
-                        <a href="#academics" class="inline-flex items-center justify-center px-7 py-4 rounded-lg bg-navy-900 text-white text-sm font-semibold hover:bg-navy-800 transition-all shadow-sm">
-                            Explore Programs
-                            <svg class="w-4 h-4 ml-2 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                            </svg>
-                        </a>
-                        <button onclick="openDrawer('Schedule a Campus or Virtual Visit')" class="inline-flex items-center justify-center px-7 py-4 rounded-lg bg-white text-navy-900 text-sm font-semibold border border-slate-300 hover:border-navy-900 hover:bg-slate-50 transition-all">
-                            Schedule a Visit
-                        </button>
-                    </div>
-
-                    <!-- Subtle Trust Line -->
-                    <div class="pt-4 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-slate-500 font-medium">
-                        <span class="flex items-center">
-                            <svg class="w-4 h-4 text-gold-500 mr-1.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-                            Merit Scholarships Available
-                        </span>
-                        <span class="flex items-center">
-                            <svg class="w-4 h-4 text-gold-500 mr-1.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-                            On-Campus &amp; Hybrid Formats
-                        </span>
-                    </div>
-                </div>
-
-                <!-- Right Architectural Showcase (5 cols) -->
-                <div class="lg:col-span-5 relative">
-                    <!-- Decorative Geometric Frame -->
-                    <div class="relative mx-auto max-w-md lg:max-w-none">
-                        <div class="absolute -top-4 -right-4 w-full h-full rounded-2xl border-2 border-gold-500/30 pointer-events-none"></div>
-                        <div class="relative rounded-2xl overflow-hidden bg-navy-900 shadow-xl aspect-[4/5] border border-slate-200">
-                            <img 
-                                src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1000&q=85" 
-                                alt="American Imperial University Historic Campus Architecture" 
-                                class="w-full h-full object-cover object-center opacity-95"
-                                onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #0B192C 0%, #1E3A5F 100%)';"
-                            >
-                            <!-- Clean Editorial Caption Overlay -->
-                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-900/20 to-transparent flex flex-col justify-end p-7">
-                                <p class="text-xs uppercase tracking-[0.2em] text-gold-500 font-semibold mb-1.5">Founders Quadrangle</p>
-                                <p class="font-editorial text-white text-xl leading-snug">
-                                    A sanctuary for scholarship, interdisciplinary discovery, and civic purpose.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- 3. KEY INSTITUTIONAL METRICS BAR -->
-    <section class="bg-navy-900 text-white py-14 border-b border-navy-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0 lg:divide-x lg:divide-navy-700/80">
-                
-                <div class="text-center px-4">
-                    <div class="font-editorial text-3xl sm:text-4xl lg:text-5xl font-bold text-gold-500">96%</div>
-                    <div class="mt-2 text-xs sm:text-sm font-medium uppercase tracking-wider text-slate-300">Career &amp; Grad Placement</div>
-                </div>
-
-                <div class="text-center px-4">
-                    <div class="font-editorial text-3xl sm:text-4xl lg:text-5xl font-bold text-white">14:1</div>
-                    <div class="mt-2 text-xs sm:text-sm font-medium uppercase tracking-wider text-slate-300">Student-Faculty Ratio</div>
-                </div>
-
-                <div class="text-center px-4">
-                    <div class="font-editorial text-3xl sm:text-4xl lg:text-5xl font-bold text-gold-500">85+</div>
-                    <div class="mt-2 text-xs sm:text-sm font-medium uppercase tracking-wider text-slate-300">Accredited Degree Programs</div>
-                </div>
-
-                <div class="text-center px-4">
-                    <div class="font-editorial text-3xl sm:text-4xl lg:text-5xl font-bold text-white">40+</div>
-                    <div class="mt-2 text-xs sm:text-sm font-medium uppercase tracking-wider text-slate-300">Countries Represented</div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- 4. ACADEMIC PATHWAYS & INTERACTIVE PROGRAM FILTER -->
-    <section id="academics" class="py-20 lg:py-28 bg-slate-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <!-- Section Header -->
-            <div class="max-w-3xl mb-14">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-gold-600">Academic Excellence</span>
-                <h2 class="font-editorial text-3xl sm:text-4xl font-bold text-navy-900 mt-3 leading-tight">
-                    Pathways Designed for Intellectual Depth
-                </h2>
-                <p class="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed">
-                    Explore degree tracks structured around mentorship, empirical research, and global applicability.
-                </p>
-            </div>
-
-            <!-- 3-Card Academic Pathways Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
-                
-                <!-- Card 1: Undergraduate -->
-                <div class="editorial-card bg-white rounded-2xl p-8 sm:p-10 border border-slate-200 flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 rounded-xl bg-navy-900/5 text-navy-900 flex items-center justify-center mb-7">
-                            <svg class="w-6 h-6 text-gold-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M12 14l9-5-9-5-9 5 9 5z"/>
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
-                            </svg>
-                        </div>
-                        <h3 class="font-editorial text-2xl font-bold text-navy-900 mb-3">Undergraduate Studies</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
-                            Four-year Bachelor of Arts and Bachelor of Science degrees grounded in a liberal arts core and specialized honors tracks.
-                        </p>
-                        <ul class="space-y-3 text-sm text-navy-800 border-t border-slate-100 pt-6 mb-8">
-                            <li class="flex items-center">
-                                <span class="w-1.5 h-1.5 rounded-full bg-gold-500 mr-3"></span>
-                                45+ Majors &amp; Interdisciplinary Minors
-                            </li>
-                            <li class="flex items-center">
-                                <span class="w-1.5 h-1.5 rounded-full bg-gold-500 mr-3"></span>
-                                First-Year Faculty Research Seminars
-                            </li>
-                            <li class="flex items-center">
-                                <span class="w-1.5 h-1.5 rounded-full bg-gold-500 mr-3"></span>
-                                Global Semester Exchange Fellowships
-                            </li>
-                        </ul>
-                    </div>
-                    <button onclick="openDrawer('Undergraduate Admissions Guide')" class="inline-flex items-center text-sm font-semibold text-navy-900 hover:text-gold-600 transition-colors group">
-                        Explore School
-                        <span class="ml-2 transform group-hover:translate-x-1 transition-transform">→</span>
-                    </button>
-                </div>
-
-                <!-- Card 2: Graduate & Doctoral -->
-                <div class="editorial-card bg-white rounded-2xl p-8 sm:p-10 border border-slate-200 flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 rounded-xl bg-navy-900/5 text-navy-900 flex items-center justify-center mb-7">
-                            <svg class="w-6 h-6 text-gold-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
-                            </svg>
-                        </div>
-                        <h3 class="font-editorial text-2xl font-bold text-navy-900 mb-3">Graduate &amp; Doctoral Schools</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
-                            Master’s and Ph.D. programs engineered to advance original scholarship, policy leadership, and scientific breakthroughs.
-                        </p>
-                        <ul class="space-y-3 text-sm text-navy-800 border-t border-slate-100 pt-6 mb-8">
-                            <li class="flex items-center">
-                                <span class="w-1.5 h-1.5 rounded-full bg-gold-500 mr-3"></span>
-                                MBA, M.Sc., LLM &amp; Doctoral Tracks
-                            </li>
-                            <li class="flex items-center">
-                                <span class="w-1.5 h-1.5 rounded-full bg-gold-500 mr-3"></span>
-                                Funded Research Assistantships
-                            </li>
-                            <li class="flex items-center">
-                                <span class="w-1.5 h-1.5 rounded-full bg-gold-500 mr-3"></span>
-                                Dedicated Thesis &amp; Lab Mentorship
-                            </li>
-                        </ul>
-                    </div>
-                    <button onclick="openDrawer('Graduate & Doctoral Catalog')" class="inline-flex items-center text-sm font-semibold text-navy-900 hover:text-gold-600 transition-colors group">
-                        Explore School
-                        <span class="ml-2 transform group-hover:translate-x-1 transition-transform">→</span>
-                    </button>
-                </div>
-
-                <!-- Card 3: Executive & Online -->
-                <div class="editorial-card bg-white rounded-2xl p-8 sm:p-10 border border-slate-200 flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 rounded-xl bg-navy-900/5 text-navy-900 flex items-center justify-center mb-7">
-                            <svg class="w-6 h-6 text-gold-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
-                            </svg>
-                        </div>
-                        <h3 class="font-editorial text-2xl font-bold text-navy-900 mb-3">Executive &amp; Online Education</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
-                            Flexible, high-impact credentials and executive residencies designed for mid-career leaders navigating global markets.
-                        </p>
-                        <ul class="space-y-3 text-sm text-navy-800 border-t border-slate-100 pt-6 mb-8">
-                            <li class="flex items-center">
-                                <span class="w-1.5 h-1.5 rounded-full bg-gold-500 mr-3"></span>
-                                Executive MBA &amp; Board Governance
-                            </li>
-                            <li class="flex items-center">
-                                <span class="w-1.5 h-1.5 rounded-full bg-gold-500 mr-3"></span>
-                                Live Cohort-Based Digital Seminars
-                            </li>
-                            <li class="flex items-center">
-                                <span class="w-1.5 h-1.5 rounded-full bg-gold-500 mr-3"></span>
-                                Custom Organizational Fellowships
-                            </li>
-                        </ul>
-                    </div>
-                    <button onclick="openDrawer('Executive Education Brochure')" class="inline-flex items-center text-sm font-semibold text-navy-900 hover:text-gold-600 transition-colors group">
-                        Explore School
-                        <span class="ml-2 transform group-hover:translate-x-1 transition-transform">→</span>
-                    </button>
-                </div>
-
-            </div>
-
-            <!-- Interactive Featured Majors Directory (Clean Tab Filter) -->
-            <div class="bg-white rounded-2xl border border-slate-200 p-8 sm:p-10">
-                <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-8 border-b border-slate-100">
-                    <div>
-                        <h3 class="font-editorial text-2xl font-bold text-navy-900">Featured Degree Programs</h3>
-                        <p class="text-sm text-slate-500 mt-1">Filter across AIU’s flagship academic divisions.</p>
-                    </div>
-                    
-                    <!-- Filter Tabs -->
-                    <div class="flex flex-wrap gap-2" role="tablist" aria-label="Program Categories">
-                        <button onclick="filterPrograms('all', this)" class="program-tab active px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold bg-navy-900 text-white transition-all">
-                            All Programs
-                        </button>
-                        <button onclick="filterPrograms('business', this)" class="program-tab px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200/70 transition-all">
-                            Business &amp; Leadership
-                        </button>
-                        <button onclick="filterPrograms('tech', this)" class="program-tab px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200/70 transition-all">
-                            Science &amp; Tech
-                        </button>
-                        <button onclick="filterPrograms('arts', this)" class="program-tab px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200/70 transition-all">
-                            Arts &amp; Humanities
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Dynamic Program Grid -->
-                <div id="programs-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-8">
-                    <!-- Populated smoothly via JS -->
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- 5. WHY AMERICAN IMPERIAL UNIVERSITY (ASYMMETRICAL FEATURE SHOWCASE) -->
-    <section id="why-aiu" class="py-20 lg:py-28 bg-white border-y border-slate-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-                
-                <!-- Left Visual Column (5 cols) -->
-                <div class="lg:col-span-5 order-2 lg:order-1">
-                    <div class="relative rounded-2xl overflow-hidden bg-navy-900 aspect-[4/4] border border-slate-200 shadow-lg">
-                        <img 
-                            src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=900&q=85" 
-                            alt="University Library & Research Commons" 
-                            class="w-full h-full object-cover opacity-90"
-                            onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(160deg, #0B192C 0%, #132743 100%)';"
-                        >
-                        <div class="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-md p-6 rounded-xl border border-slate-200 shadow-md">
-                            <div class="flex items-center justify-between">
-                                <div>
-                                    <p class="text-xs font-bold uppercase tracking-wider text-gold-600">Institutional Standard</p>
-                                    <p class="font-editorial text-lg font-bold text-navy-900 mt-0.5">Internationally Accredited</p>
-                                </div>
-                                <div class="w-10 h-10 rounded-full bg-gold-100 flex items-center justify-center text-gold-600 font-serif font-bold">
-                                    AIU
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right Feature List Column (7 cols) -->
-                <div class="lg:col-span-7 order-1 lg:order-2 space-y-10">
-                    <div>
-                        <span class="text-xs font-bold uppercase tracking-[0.2em] text-gold-600">The AIU Distinction</span>
-                        <h2 class="font-editorial text-3xl sm:text-4xl font-bold text-navy-900 mt-3 leading-tight">
-                            An Academic Environment Built for Lasting Impact
-                        </h2>
-                        <p class="mt-4 text-base text-slate-600 leading-relaxed">
-                            We intentionally maintain small seminar cohorts so every student collaborates directly with leading scholars and industry practitioners.
-                        </p>
-                    </div>
-
-                    <div class="space-y-8 border-t border-slate-100 pt-8">
-                        <!-- Pillar 1 -->
-                        <div class="flex items-start space-x-5">
-                            <div class="flex-shrink-0 w-11 h-11 rounded-xl bg-gold-100 border border-gold-500/30 flex items-center justify-center text-gold-600 font-editorial font-bold text-lg">
-                                I
-                            </div>
-                            <div>
-                                <h3 class="font-editorial text-xl font-bold text-navy-900">Global Accreditation &amp; Recognition</h3>
-                                <p class="mt-2 text-sm sm:text-base text-slate-600 leading-relaxed">
-                                    Degrees benchmarked to international academic standards, ensuring seamless credit mobility and global employer recognition across North America, Europe, and Asia.
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- Pillar 2 -->
-                        <div class="flex items-start space-x-5">
-                            <div class="flex-shrink-0 w-11 h-11 rounded-xl bg-gold-100 border border-gold-500/30 flex items-center justify-center text-gold-600 font-editorial font-bold text-lg">
-                                II
-                            </div>
-                            <div>
-                                <h3 class="font-editorial text-xl font-bold text-navy-900">Distinguished Practitioner Faculty</h3>
-                                <p class="mt-2 text-sm sm:text-base text-slate-600 leading-relaxed">
-                                    Learn directly from published researchers, former policy advisors, and industry executives who bring active real-world case studies into every lecture hall.
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- Pillar 3 -->
-                        <div id="research" class="flex items-start space-x-5">
-                            <div class="flex-shrink-0 w-11 h-11 rounded-xl bg-gold-100 border border-gold-500/30 flex items-center justify-center text-gold-600 font-editorial font-bold text-lg">
-                                III
-                            </div>
-                            <div>
-                                <h3 class="font-editorial text-xl font-bold text-navy-900">Industry-Connected Research Institutes</h3>
-                                <p class="mt-2 text-sm sm:text-base text-slate-600 leading-relaxed">
-                                    Dedicated centers in Sustainable Economics, Applied AI Ethics, and Global Public Policy connect undergraduate and graduate fellows with funded fellowships.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- 6. ADMISSIONS & FINANCIAL AID BANNER -->
-    <section id="admissions" class="py-20 lg:py-24 bg-slate-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-navy-900 rounded-3xl p-8 sm:p-12 lg:p-16 text-white relative overflow-hidden shadow-xl">
-                <!-- Subtle geometric corner accent -->
-                <div class="absolute top-0 right-0 w-72 h-72 bg-gold-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
-                <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                    <div class="lg:col-span-5 space-y-5">
-                        <span class="text-xs font-bold uppercase tracking-[0.2em] text-gold-500">Admissions &amp; Aid</span>
-                        <h2 class="font-editorial text-3xl sm:text-4xl font-bold leading-tight">
-                            Begin Your Academic Journey at AIU
-                        </h2>
-                        <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-                            Our holistic admissions process evaluates academic promise, intellectual curiosity, and leadership potential. Over 70% of admitted students receive merit or need-based grants.
-                        </p>
-                        <div class="pt-3 flex flex-wrap gap-4">
-                            <button onclick="openDrawer('Request Admissions Information')" class="px-6 py-3.5 rounded-lg bg-gold-500 text-navy-950 font-semibold text-sm hover:bg-amber-400 transition-colors shadow-sm">
-                                Request Information
-                            </button>
-                            <button onclick="openDrawer('Financial Aid & Scholarship Estimator')" class="px-6 py-3.5 rounded-lg bg-navy-800 text-white border border-navy-700 font-semibold text-sm hover:border-gold-500/60 transition-colors">
-                                Tuition &amp; Aid Guide
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- 3-Step Horizontal Overview -->
-                    <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-6">
-                        <div class="bg-navy-800/70 border border-navy-700/80 rounded-2xl p-6">
-                            <span class="font-editorial text-2xl font-bold text-gold-500">01</span>
-                            <h3 class="font-semibold text-white text-base mt-3">Submit Application</h3>
-                            <p class="text-xs text-slate-300 mt-2 leading-relaxed">
-                                Complete the online dossier with transcripts, personal essay, and academic recommendations.
-                            </p>
-                        </div>
-
-                        <div class="bg-navy-800/70 border border-navy-700/80 rounded-2xl p-6">
-                            <span class="font-editorial text-2xl font-bold text-gold-500">02</span>
-                            <h3 class="font-semibold text-white text-base mt-3">Academic Review</h3>
-                            <p class="text-xs text-slate-300 mt-2 leading-relaxed">
-                                Faculty committees evaluate each candidate holistically, including an optional alumni interview.
-                            </p>
-                        </div>
-
-                        <div class="bg-navy-800/70 border border-navy-700/80 rounded-2xl p-6">
-                            <span class="font-editorial text-2xl font-bold text-gold-500">03</span>
-                            <h3 class="font-semibold text-white text-base mt-3">Enrollment &amp; Aid</h3>
-                            <p class="text-xs text-slate-300 mt-2 leading-relaxed">
-                                Receive your admission decision alongside a transparent merit scholarship and financial aid package.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 7. CAMPUS NEWS & UPCOMING EVENTS (MINIMAL 2-COLUMN EDITORIAL LAYOUT) -->
-    <section id="news" class="py-20 lg:py-28 bg-white border-t border-slate-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-14 gap-4">
-                <div>
-                    <span class="text-xs font-bold uppercase tracking-[0.2em] text-gold-600">Chronicle &amp; Calendar</span>
-                    <h2 class="font-editorial text-3xl sm:text-4xl font-bold text-navy-900 mt-3">
-                        Campus News &amp; Academic Events
-                    </h2>
-                </div>
-                <button onclick="openDrawer('University Newsroom Archive')" class="text-sm font-semibold text-navy-900 hover:text-gold-600 transition-colors self-start sm:self-auto">
-                    View All Announcements →
-                </button>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-                
-                <!-- Left Column: Featured News Article Card (7 cols) -->
-                <div class="lg:col-span-7">
-                    <article class="editorial-card group bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 h-full flex flex-col">
-                        <div class="aspect-[16/9] bg-navy-900 overflow-hidden relative">
-                            <img 
-                                src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1000&q=85" 
-                                alt="AIU Center for Global Policy & Innovation" 
-                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #0B192C 0%, #1E3A5F 100%)';"
-                            >
-                            <span class="absolute top-4 left-4 px-3 py-1 rounded-md bg-white/95 text-navy-900 text-xs font-bold uppercase tracking-wider shadow-sm">
-                                Research Spotlight
-                            </span>
-                        </div>
-                        <div class="p-8 sm:p-10 flex-1 flex flex-col justify-between">
-                            <div>
-                                <div class="text-xs text-slate-500 font-medium mb-3">November 2026 • Office of Academic Affairs</div>
-                                <h3 class="font-editorial text-2xl sm:text-3xl font-bold text-navy-900 leading-snug group-hover:text-gold-600 transition-colors">
-                                    AIU Inaugurates the Institute for Ethical Artificial Intelligence &amp; Global Governance
-                                </h3>
-                                <p class="mt-4 text-slate-600 text-sm sm:text-base leading-relaxed">
-                                    Bringing together computer scientists, legal scholars, and economists, the new interdisciplinary center will fund twenty annual graduate fellowships and host international policy symposia.
-                                </p>
-                            </div>
-                            <div class="pt-6 mt-6 border-t border-slate-200/80">
-                                <button onclick="openDrawer('Full Story: Institute for Ethical AI')" class="inline-flex items-center text-sm font-semibold text-navy-900 hover:text-gold-600 transition-colors">
-                                    Read Full Story <span class="ml-2">→</span>
-                                </button>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-
-                <!-- Right Column: Clean List of 3 Upcoming Events (5 cols) -->
-                <div class="lg:col-span-5 flex flex-col justify-between space-y-6">
-                    <div class="border-b border-slate-200 pb-4">
-                        <h3 class="font-editorial text-xl font-bold text-navy-900">Upcoming Lectures &amp; Open Houses</h3>
-                    </div>
-
-                    <!-- Event 1 -->
-                    <div class="editorial-card bg-white rounded-xl p-6 border border-slate-200 flex items-start space-x-5">
-                        <div class="flex-shrink-0 w-16 h-16 rounded-xl bg-navy-900 text-white flex flex-col items-center justify-center text-center">
-                            <span class="text-[10px] font-bold uppercase tracking-widest text-gold-500">DEC</span>
-                            <span class="font-editorial text-2xl font-bold leading-none mt-0.5">05</span>
-                        </div>
-                        <div>
-                            <span class="text-xs font-semibold text-gold-600 uppercase tracking-wider">Admissions Open House</span>
-                            <h4 class="font-editorial text-lg font-bold text-navy-900 mt-1">Undergraduate Campus Preview Day</h4>
-                            <p class="text-xs text-slate-500 mt-1.5">10:00 AM – 2:30 PM • Founders Hall &amp; Virtual</p>
-                        </div>
-                    </div>
-
-                    <!-- Event 2 -->
-                    <div class="editorial-card bg-white rounded-xl p-6 border border-slate-200 flex items-start space-x-5">
-                        <div class="flex-shrink-0 w-16 h-16 rounded-xl bg-navy-900 text-white flex flex-col items-center justify-center text-center">
-                            <span class="text-[10px] font-bold uppercase tracking-widest text-gold-500">DEC</span>
-                            <span class="font-editorial text-2xl font-bold leading-none mt-0.5">14</span>
-                        </div>
-                        <div>
-                            <span class="text-xs font-semibold text-gold-600 uppercase tracking-wider">Distinguished Lecture</span>
-                            <h4 class="font-editorial text-lg font-bold text-navy-900 mt-1">Global Monetary Policy in Transition</h4>
-                            <p class="text-xs text-slate-500 mt-1.5">5:30 PM • Auditorium of International Studies</p>
-                        </div>
-                    </div>
-
-                    <!-- Event 3 -->
-                    <div class="editorial-card bg-white rounded-xl p-6 border border-slate-200 flex items-start space-x-5">
-                        <div class="flex-shrink-0 w-16 h-16 rounded-xl bg-navy-900 text-white flex flex-col items-center justify-center text-center">
-                            <span class="text-[10px] font-bold uppercase tracking-widest text-gold-500">JAN</span>
-                            <span class="font-editorial text-2xl font-bold leading-none mt-0.5">18</span>
-                        </div>
-                        <div>
-                            <span class="text-xs font-semibold text-gold-600 uppercase tracking-wider">Graduate Colloquium</span>
-                            <h4 class="font-editorial text-lg font-bold text-navy-900 mt-1">Executive MBA &amp; M.Sc. Information Session</h4>
-                            <p class="text-xs text-slate-500 mt-1.5">6:00 PM • Live Interactive Webinar</p>
-                        </div>
-                    </div>
-
-                    <button onclick="openDrawer('Full Academic Calendar')" class="w-full py-3.5 rounded-xl border border-slate-300 text-sm font-semibold text-navy-900 hover:border-navy-900 hover:bg-slate-50 transition-colors">
-                        Explore Full Academic Calendar
-                    </button>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- 8. REFINED 4-COLUMN ACADEMIC FOOTER -->
-    <footer class="bg-navy-950 text-slate-300 pt-20 pb-12 border-t border-navy-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 pb-16 border-b border-navy-800/80">
-                
-                <!-- Col 1: Brand & Mission (4 cols) -->
-                <div class="lg:col-span-4 space-y-5">
-                    <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 rounded-lg bg-navy-900 flex items-center justify-center border border-gold-500/40">
-                            <svg class="w-5 h-5 text-gold-500" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M16 3L5 7.5V15.5C5 22.4 9.7 28.6 16 30C22.3 28.6 27 22.4 27 15.5V7.5L16 3Z" stroke="currentColor" stroke-width="1.75"/>
-                                <path d="M11 12H21M16 12V23" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                            </svg>
-                        </div>
-                        <div>
-                            <span class="font-editorial text-lg font-bold text-white block leading-none">American Imperial</span>
-                            <span class="text-[10px] font-semibold uppercase tracking-[0.22em] text-gold-500">University</span>
-                        </div>
-                    </div>
-                    <p class="text-sm text-slate-400 leading-relaxed max-w-sm">
-                        Dedicated to advancing knowledge, cultivating ethical leadership, and fostering international scholarship across disciplines.
-                    </p>
-                    <div class="pt-2 flex items-center space-x-3">
-                        <span class="px-3 py-1 rounded border border-navy-700 bg-navy-900/80 text-[11px] font-medium text-slate-300">
-                            Chartered Institution
-                        </span>
-                        <span class="px-3 py-1 rounded border border-navy-700 bg-navy-900/80 text-[11px] font-medium text-gold-500">
-                            Globally Accredited
-                        </span>
-                    </div>
-                </div>
-
-                <!-- Col 2: Academics (2 cols) -->
-                <div class="lg:col-span-2 space-y-4">
-                    <h4 class="text-xs font-bold uppercase tracking-widest text-white">Academics</h4>
-                    <ul class="space-y-2.5 text-sm text-slate-400">
-                        <li><a href="#academics" class="hover:text-gold-500 transition-colors">Undergraduate</a></li>
-                        <li><a href="#academics" class="hover:text-gold-500 transition-colors">Graduate Schools</a></li>
-                        <li><a href="#academics" class="hover:text-gold-500 transition-colors">Executive Education</a></li>
-                        <li><a href="#research" class="hover:text-gold-500 transition-colors">Research Centers</a></li>
-                        <li><a href="#academics" class="hover:text-gold-500 transition-colors">Academic Catalog</a></li>
-                    </ul>
-                </div>
-
-                <!-- Col 3: Admissions & Campus (3 cols) -->
-                <div class="lg:col-span-3 space-y-4">
-                    <h4 class="text-xs font-bold uppercase tracking-widest text-white">Admissions &amp; Campus</h4>
-                    <ul class="space-y-2.5 text-sm text-slate-400">
-                        <li><a href="#admissions" class="hover:text-gold-500 transition-colors">How to Apply</a></li>
-                        <li><a href="#admissions" class="hover:text-gold-500 transition-colors">Tuition &amp; Scholarships</a></li>
-                        <li><a href="#why-aiu" class="hover:text-gold-500 transition-colors">International Students</a></li>
-                        <li><a href="#news" class="hover:text-gold-500 transition-colors">Campus Life &amp; Housing</a></li>
-                        <li><a href="#news" class="hover:text-gold-500 transition-colors">University Library</a></li>
-                    </ul>
-                </div>
-
-                <!-- Col 4: Contact Info (3 cols) -->
-                <div class="lg:col-span-3 space-y-4">
-                    <h4 class="text-xs font-bold uppercase tracking-widest text-white">Office of Admissions</h4>
-                    <ul class="space-y-2.5 text-sm text-slate-400">
-                        <li>100 Imperial Academic Way</li>
-                        <li>Suite 400, University District</li>
-                        <li class="pt-1 text-slate-300">admissions@americanimperialuniversity.edu</li>
-                        <li class="text-slate-300">+1 (800) 555-0194</li>
-                    </ul>
-                </div>
-
-            </div>
-
-            <!-- Bottom Copyright Bar -->
-            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
-                <p>&copy; 2026 American Imperial University. All rights reserved.</p>
-                <div class="flex items-center space-x-6">
-                    <a href="#privacy" onclick="openDrawer('Privacy Policy')" class="hover:text-slate-300 transition-colors">Privacy Policy</a>
-                    <a href="#terms" onclick="openDrawer('Terms of Use')" class="hover:text-slate-300 transition-colors">Terms of Use</a>
-                    <a href="#accreditation" onclick="openDrawer('Accreditation & Disclosures')" class="hover:text-slate-300 transition-colors">Accreditation</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- SLIDE-OVER INQUIRY / APPLICATION DRAWER (Purely UI/Visual) -->
-    <div id="drawer-backdrop" onclick="closeDrawer()" class="fixed inset-0 bg-navy-950/60 backdrop-blur-xs z-50 hidden opacity-0 transition-opacity duration-300"></div>
-    <aside id="inquiry-drawer" aria-hidden="true" class="fixed inset-y-0 right-0 max-w-md w-full bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-out flex flex-col justify-between border-l border-slate-200">
-        <div class="p-6 sm:p-8 overflow-y-auto">
-            <div class="flex items-center justify-between pb-6 border-b border-slate-100">
-                <div>
-                    <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-gold-600">American Imperial University</span>
-                    <h3 id="drawer-title" class="font-editorial text-2xl font-bold text-navy-900 mt-1">Request Information</h3>
-                </div>
-                <button onclick="closeDrawer()" aria-label="Close Drawer" class="p-2 rounded-lg text-slate-400 hover:text-navy-900 hover:bg-slate-100 transition-colors">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                    </svg>
-                </button>
-            </div>
-
-            <form onsubmit="handleDrawerSubmit(event)" class="mt-6 space-y-5">
-                <div>
-                    <label class="block text-xs font-semibold uppercase tracking-wider text-navy-800 mb-2">Full Name</label>
-                    <input type="text" required placeholder="e.g., Eleanor Vance" class="w-full px-4 py-3 rounded-lg border border-slate-300 text-sm focus:outline-none focus:border-navy-900">
-                </div>
-                <div>
-                    <label class="block text-xs font-semibold uppercase tracking-wider text-navy-800 mb-2">Email Address</label>
-                    <input type="email" required placeholder="eleanor.vance@example.com" class="w-full px-4 py-3 rounded-lg border border-slate-300 text-sm focus:outline-none focus:border-navy-900">
-                </div>
-                <div>
-                    <label class="block text-xs font-semibold uppercase tracking-wider text-navy-800 mb-2">Academic Level of Interest</label>
-                    <select class="w-full px-4 py-3 rounded-lg border border-slate-300 text-sm bg-white focus:outline-none focus:border-navy-900">
-                        <option>Undergraduate Bachelor's Degree</option>
-                        <option>Graduate Master's / Doctoral Program</option>
-                        <option>Executive &amp; Online Education</option>
-                        <option>International Visiting Scholar</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="block text-xs font-semibold uppercase tracking-wider text-navy-800 mb-2">Area of Study</label>
-                    <select class="w-full px-4 py-3 rounded-lg border border-slate-300 text-sm bg-white focus:outline-none focus:border-navy-900">
-                        <option>Global Business &amp; Finance</option>
-                        <option>Computer Science &amp; Artificial Intelligence</option>
-                        <option>International Relations &amp; Public Policy</option>
-                        <option>Biomedical &amp; Environmental Sciences</option>
-                        <option>Arts, Humanities &amp; Philosophy</option>
-                    </select>
-                </div>
-
-                <div id="drawer-feedback" class="hidden p-4 rounded-xl bg-gold-100 border border-gold-500/40 text-navy-900 text-sm">
-                    Thank you. An AIU Admissions Counselor will send the digital prospectus to your inbox shortly.
-                </div>
-
-                <button type="submit" class="w-full py-3.5 rounded-lg bg-navy-900 text-white font-semibold text-sm hover:bg-navy-800 transition-colors shadow-sm">
-                    Submit Request
-                </button>
-            </form>
-        </div>
-
-        <div class="p-6 bg-slate-50 border-t border-slate-200 text-xs text-slate-500">
-            Need immediate assistance? Contact our Admissions Desk at <span class="font-semibold text-navy-900">+1 (800) 555-0194</span>.
-        </div>
-    </aside>
-
-    <!-- JAVASCRIPT: Interactive Program Tabs, Mobile Menu & Slide-Over Drawer -->
-    <script>
-        // 1. Featured Programs Data
-        const programsData = [
-            {
-                title: "B.Sc. in Global Economics & Finance",
-                category: "business",
-                level: "Undergraduate • 4 Years",
-                summary: "Quantitative economic modeling, international capital markets, and institutional strategy."
-            },
-            {
-                title: "M.Sc. in Artificial Intelligence & Data Systems",
-                category: "tech",
-                level: "Graduate • 2 Years",
-                summary: "Machine learning architectures, ethical AI deployment, and large-scale computational research."
-            },
-            {
-                title: "B.A. in International Relations & Diplomacy",
-                category: "arts",
-                level: "Undergraduate • 4 Years",
-                summary: "Comparative governance, international law, and global conflict resolution seminars."
-            },
-            {
-                title: "Executive MBA in Global Leadership",
-                category: "business",
-                level: "Executive • 18 Months",
-                summary: "Designed for senior executives leading cross-border organizations and digital transformation."
-            },
-            {
-                title: "B.Sc. in Bioengineering & Sustainability",
-                category: "tech",
-                level: "Undergraduate • 4 Years",
-                summary: "Laboratory-intensive training in clean energy systems, biomaterials, and environmental resilience."
-            },
-            {
-                title: "M.A. in Philosophy, Politics & Economics",
-                category: "arts",
-                level: "Graduate • 2 Years",
-                summary: "Interdisciplinary inquiry into public policy ethics, institutional design, and social theory."
-            }
-        ];
-
-        // Render Programs into Grid
-        function renderPrograms(filter = 'all') {
-            const grid = document.getElementById('programs-grid');
-            const filtered = filter === 'all' 
-                ? programsData 
-                : programsData.filter(item => item.category === filter);
-
-            grid.innerHTML = filtered.map(prog => `
-                <div class="fade-in p-6 rounded-xl border border-slate-200/90 bg-slate-50/50 hover:bg-white hover:border-gold-500/60 transition-all flex flex-col justify-between">
-                    <div>
-                        <span class="text-[11px] font-bold uppercase tracking-wider text-gold-600">${prog.level}</span>
-                        <h4 class="font-editorial text-lg font-bold text-navy-900 mt-1.5">${prog.title}</h4>
-                        <p class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed">${prog.summary}</p>
-                    </div>
-                    <div class="mt-5 pt-4 border-t border-slate-200/60 flex items-center justify-between">
-                        <button onclick="openDrawer('${prog.title}')" class="text-xs font-semibold text-navy-900 hover:text-gold-600 transition-colors">
-                            Program Overview →
-                        </button>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        // Filter Tab Handler
-        function filterPrograms(category, btnElement) {
-            document.querySelectorAll('.program-tab').forEach(btn => {
-                btn.classList.remove('bg-navy-900', 'text-white');
-                btn.classList.add('bg-slate-100', 'text-slate-600');
-            });
-            btnElement.classList.remove('bg-slate-100', 'text-slate-600');
-            btnElement.classList.add('bg-navy-900', 'text-white');
-
-            renderPrograms(category);
-        }
-
-        // 2. Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const iconOpen = document.getElementById('menu-icon-open');
-        const iconClose = document.getElementById('menu-icon-close');
-
-        mobileMenuBtn.addEventListener('click', () => {
-            const isHidden = mobileMenu.classList.contains('hidden');
-            if (isHidden) {
-                mobileMenu.classList.remove('hidden');
-                iconOpen.classList.add('hidden');
-                iconClose.classList.remove('hidden');
-            } else {
-                closeMobileMenu();
-            }
+        const selected = btn.dataset.filter;
+        programCards.forEach((card) => {
+          const categories = card.dataset.category.split(" ");
+          const show = selected === "all" || categories.includes(selected);
+          card.style.display = show ? "flex" : "none";
         });
+      });
+    });
 
-        function closeMobileMenu() {
-            mobileMenu.classList.add('hidden');
-            iconOpen.classList.remove('hidden');
-            iconClose.classList.add('hidden');
-        }
+    const drawer = document.getElementById("infoDrawer");
+    const backdrop = document.getElementById("drawerBackdrop");
+    const openBtns = document.querySelectorAll("[data-open-drawer]");
+    const closeBtn = document.getElementById("closeDrawer");
+    const form = document.getElementById("inquiryForm");
+    const confirmMsg = document.getElementById("confirmMsg");
 
-        // 3. Slide-over Inquiry Drawer
-        const drawer = document.getElementById('inquiry-drawer');
-        const backdrop = document.getElementById('drawer-backdrop');
-        const drawerTitle = document.getElementById('drawer-title');
-        const drawerFeedback = document.getElementById('drawer-feedback');
+    function toggleDrawer(open) {
+      drawer.classList.toggle("open", open);
+      backdrop.classList.toggle("open", open);
+    }
 
-        function openDrawer(titleText = 'Request Information') {
-            drawerTitle.textContent = titleText;
-            drawerFeedback.classList.add('hidden');
-            backdrop.classList.remove('hidden');
-            setTimeout(() => backdrop.classList.remove('opacity-0'), 10);
-            drawer.classList.remove('translate-x-full');
-            drawer.setAttribute('aria-hidden', 'false');
-        }
+    openBtns.forEach((btn) => btn.addEventListener("click", () => toggleDrawer(true)));
+    closeBtn.addEventListener("click", () => toggleDrawer(false));
+    backdrop.addEventListener("click", () => toggleDrawer(false));
 
-        function closeDrawer() {
-            backdrop.classList.add('opacity-0');
-            drawer.classList.add('translate-x-full');
-            drawer.setAttribute('aria-hidden', 'true');
-            setTimeout(() => backdrop.classList.add('hidden'), 300);
-        }
-
-        function handleDrawerSubmit(e) {
-            e.preventDefault();
-            drawerFeedback.classList.remove('hidden');
-            e.target.reset();
-        }
-
-        // Initialize Default View
-        window.addEventListener('DOMContentLoaded', () => {
-            renderPrograms('all');
-        });
-    </script>
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      confirmMsg.style.display = "block";
+      form.reset();
+    });
+  </script>
 </body>
 </html>
