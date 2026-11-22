@@ -3,23 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>American Imperial University — Degrees &amp; Academic Programs</title>
+  <title>American Imperial University | Accredited Higher Education &amp; Leadership</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #faf9f6;
+      --bg: #faf8f5;
       --surface: #ffffff;
-      --surface-alt: #f2efe9;
-      --ink: #172133;
-      --muted: #556070;
-      --accent: #1d3557;
-      --accent-soft: #e8eef5;
-      --gold: #9a6b26;
-      --border: #e3dfd7;
-      --radius: 12px;
-      --max: 1160px;
+      --surface-warm: #f3efe8;
+      --navy: #102138;
+      --navy-soft: #1b3456;
+      --ink: #182230;
+      --muted: #526071;
+      --gold: #a67628;
+      --gold-light: #f6eedc;
+      --border: #e4dfd5;
+      --radius: 14px;
+      --shadow-sm: 0 6px 20px rgba(16, 33, 56, 0.05);
+      --shadow-lg: 0 22px 50px rgba(16, 33, 56, 0.11);
+      --container: 1200px;
     }
 
     * {
@@ -33,18 +36,18 @@
     }
 
     body {
-      font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
       background: var(--bg);
       color: var(--ink);
-      line-height: 1.6;
+      line-height: 1.65;
       -webkit-font-smoothing: antialiased;
     }
 
     h1, h2, h3, .serif {
-      font-family: "Newsreader", Georgia, serif;
-      font-weight: 500;
-      letter-spacing: -0.02em;
-      line-height: 1.18;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-weight: 600;
+      letter-spacing: -0.015em;
+      line-height: 1.12;
     }
 
     a {
@@ -58,16 +61,17 @@
     }
 
     .container {
-      width: min(100% - 2.5rem, var(--max));
+      width: min(100% - 2.5rem, var(--container));
       margin-inline: auto;
     }
 
-    /* Top bar */
+    /* Utility Topbar */
     .topbar {
-      background: var(--ink);
-      color: #e6ebf2;
-      font-size: 0.8125rem;
+      background: var(--navy);
+      color: #dbe3ee;
+      font-size: 0.8rem;
       padding: 0.55rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .topbar-inner {
@@ -78,80 +82,109 @@
       gap: 0.75rem;
     }
 
+    .topbar-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .pulse-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #dfb05c;
+    }
+
     .topbar-links {
       display: flex;
-      gap: 1.25rem;
-      opacity: 0.9;
+      gap: 1.35rem;
+    }
+
+    .topbar-links a {
+      color: #c5d1e0;
+      transition: color 0.2s;
     }
 
     .topbar-links a:hover {
-      text-decoration: underline;
-      text-underline-offset: 3px;
+      color: #ffffff;
     }
 
-    /* Header */
+    /* Main Header */
     header {
       position: sticky;
       top: 0;
-      z-index: 30;
-      background: rgba(250, 249, 246, 0.92);
-      backdrop-filter: blur(10px);
+      z-index: 40;
+      background: rgba(250, 248, 245, 0.94);
+      backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
 
-    .nav-wrap {
+    .nav-bar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      min-height: 74px;
+      min-height: 78px;
       gap: 1.5rem;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.85rem;
     }
 
-    .brand-mark {
-      width: 38px;
-      height: 38px;
-      border-radius: 8px;
-      background: var(--accent);
-      color: #fff;
+    .crest {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--navy), var(--navy-soft));
+      color: #f3d08a;
       display: grid;
       place-items: center;
-      font-family: "Newsreader", serif;
-      font-size: 1.1rem;
-      font-weight: 600;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      border: 1px solid rgba(243, 208, 138, 0.35);
     }
 
-    .brand-text span:first-child {
+    .brand-name span:first-child {
       display: block;
-      font-weight: 600;
-      font-size: 0.95rem;
-      line-height: 1.15;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.05;
     }
 
-    .brand-text span:last-child {
+    .brand-name span:last-child {
       display: block;
-      font-size: 0.75rem;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
       color: var(--muted);
+      margin-top: 2px;
     }
 
-    nav {
+    nav.desktop-nav {
       display: flex;
       align-items: center;
-      gap: 1.5rem;
-      font-size: 0.92rem;
+      gap: 1.75rem;
+      font-size: 0.9rem;
+      font-weight: 500;
       color: var(--muted);
     }
 
-    nav a:hover {
-      color: var(--ink);
+    nav.desktop-nav a {
+      position: relative;
+      padding: 0.25rem 0;
+      transition: color 0.2s;
     }
 
-    .nav-actions {
+    nav.desktop-nav a:hover {
+      color: var(--navy);
+    }
+
+    .nav-cta {
       display: flex;
       align-items: center;
       gap: 0.75rem;
@@ -161,367 +194,745 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.45rem;
-      padding: 0.72rem 1.25rem;
-      border-radius: 8px;
-      font-size: 0.9rem;
+      gap: 0.5rem;
+      padding: 0.72rem 1.35rem;
+      border-radius: 9px;
+      font-size: 0.88rem;
       font-weight: 600;
-      border: 1px solid transparent;
       cursor: pointer;
-      transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
     }
 
     .btn-primary {
-      background: var(--accent);
-      color: #fff;
+      background: var(--navy);
+      color: #ffffff;
     }
 
     .btn-primary:hover {
-      background: #142640;
+      background: var(--navy-soft);
+      transform: translateY(-1px);
     }
 
-    .btn-ghost {
-      background: transparent;
+    .btn-outline {
+      background: var(--surface);
       border-color: var(--border);
-      color: var(--ink);
+      color: var(--navy);
     }
 
-    .btn-ghost:hover {
-      background: var(--surface-alt);
+    .btn-outline:hover {
+      border-color: var(--navy);
+      background: var(--surface-warm);
     }
 
-    .menu-toggle {
+    .mobile-btn {
       display: none;
-      background: none;
+      background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 8px;
-      padding: 0.5rem 0.75rem;
-      font-size: 0.9rem;
+      padding: 0.5rem 0.8rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--navy);
       cursor: pointer;
+    }
+
+    .mobile-drawer {
+      display: none;
+      padding: 1rem 0 1.4rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .mobile-drawer.open {
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .mobile-drawer a {
+      padding: 0.4rem 0;
+      font-weight: 500;
       color: var(--ink);
     }
 
-    /* Hero */
+    /* Hero Section */
     .hero {
-      padding: 4.25rem 0 3.5rem;
+      position: relative;
+      padding: 4.5rem 0 4rem;
+      overflow: hidden;
+    }
+
+    .hero-glow {
+      position: absolute;
+      top: -140px;
+      right: -120px;
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(166, 118, 40, 0.1) 0%, transparent 70%);
+      pointer-events: none;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 3rem;
+      grid-template-columns: 1.12fr 0.88fr;
+      gap: 3.5rem;
       align-items: center;
     }
 
-    .eyebrow {
-      display: inline-block;
+    .pill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.38rem 0.9rem;
+      border-radius: 999px;
+      background: var(--gold-light);
+      color: #7c5416;
       font-size: 0.78rem;
       font-weight: 600;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--gold);
-      margin-bottom: 1rem;
+      margin-bottom: 1.25rem;
     }
 
     .hero h1 {
-      font-size: clamp(2.3rem, 4.2vw, 3.45rem);
-      margin-bottom: 1.15rem;
+      font-size: clamp(2.6rem, 4.6vw, 3.9rem);
+      color: var(--navy);
+      margin-bottom: 1.25rem;
     }
 
-    .hero p {
-      font-size: 1.05rem;
+    .hero-lead {
+      font-size: 1.06rem;
       color: var(--muted);
       max-width: 54ch;
-      margin-bottom: 1.75rem;
-    }
-
-    .hero-cta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.85rem;
       margin-bottom: 2rem;
     }
 
-    .hero-notes {
+    .hero-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 1.5rem;
+      gap: 0.9rem;
+      margin-bottom: 2.25rem;
+    }
+
+    .hero-trust {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.6rem;
+      padding-top: 1.35rem;
+      border-top: 1px solid var(--border);
       font-size: 0.85rem;
       color: var(--muted);
-      padding-top: 1.25rem;
-      border-top: 1px solid var(--border);
     }
 
-    .hero-card {
+    .hero-trust span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .check-dot {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--gold-light);
+      color: var(--gold);
+      display: inline-grid;
+      place-items: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+    }
+
+    .hero-visual {
+      position: relative;
+    }
+
+    .hero-frame {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: 0 14px 36px rgba(23, 33, 51, 0.06);
+      box-shadow: var(--shadow-lg);
     }
 
-    .hero-card img {
+    .hero-frame img {
       width: 100%;
-      height: 310px;
+      height: 410px;
       object-fit: cover;
     }
 
-    .hero-card-body {
-      padding: 1.25rem 1.4rem;
+    .hero-caption {
+      padding: 1.35rem 1.5rem;
+      background: var(--surface);
     }
 
-    .hero-card-body p:first-child {
-      font-weight: 600;
-      font-size: 0.95rem;
-      margin-bottom: 0.25rem;
+    .hero-caption p:first-child {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.2rem;
     }
 
-    .hero-card-body p:last-child {
+    .hero-caption p:last-child {
       font-size: 0.86rem;
       color: var(--muted);
     }
 
-    /* Highlights strip */
-    .highlights {
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 2rem 0;
+    /* Metrics Strip */
+    .metrics {
+      background: var(--navy);
+      color: #ffffff;
+      padding: 2.35rem 0;
     }
 
-    .highlights-grid {
+    .metrics-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 1.75rem;
+      gap: 2rem;
     }
 
-    .stat-num {
-      font-family: "Newsreader", serif;
-      font-size: 1.95rem;
+    .metric-item {
+      border-left: 2px solid rgba(223, 176, 92, 0.45);
+      padding-left: 1.15rem;
+    }
+
+    .metric-val {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 2.25rem;
+      font-weight: 700;
+      color: #f3d08a;
+      line-height: 1.05;
+      margin-bottom: 0.3rem;
+    }
+
+    .metric-desc {
+      font-size: 0.85rem;
+      color: #cbd5e1;
+    }
+
+    /* Section Headers */
+    section.section {
+      padding: 5rem 0;
+    }
+
+    .section-header {
+      max-width: 64ch;
+      margin-bottom: 3rem;
+    }
+
+    .section-kicker {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-header h2 {
+      font-size: clamp(2.1rem, 3.4vw, 2.85rem);
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-header p {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    /* Academic Pathways (3-Card Grid) */
+    .pathways-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.65rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .pathway-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .pathway-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .pathway-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .pathway-card h3 {
+      font-size: 1.6rem;
+      color: var(--navy);
+      margin-bottom: 0.65rem;
+    }
+
+    .pathway-card p {
+      font-size: 0.92rem;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .pathway-list {
+      list-style: none;
+      display: grid;
+      gap: 0.55rem;
+      font-size: 0.87rem;
+      color: var(--ink);
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .pathway-list li::before {
+      content: "•";
+      color: var(--gold);
+      font-weight: 700;
+      margin-right: 0.55rem;
+    }
+
+    /* Interactive Program Filter Box */
+    .catalog-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 2.25rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .catalog-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .catalog-top h3 {
+      font-size: 1.75rem;
+      color: var(--navy);
+    }
+
+    .catalog-top p {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tab-btn {
+      padding: 0.52rem 1.05rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--muted);
+      font-size: 0.84rem;
       font-weight: 600;
-      color: var(--accent);
-      line-height: 1.1;
-      margin-bottom: 0.25rem;
+      cursor: pointer;
+      transition: all 0.18s ease;
     }
 
-    .stat-label {
+    .tab-btn.active,
+    .tab-btn:hover {
+      background: var(--navy);
+      color: #ffffff;
+      border-color: var(--navy);
+    }
+
+    .programs-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.35rem;
+    }
+
+    .prog-card {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1.15rem;
+    }
+
+    .prog-level {
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+    }
+
+    .prog-card h4 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 0.55rem;
+    }
+
+    .prog-card p {
       font-size: 0.88rem;
       color: var(--muted);
     }
 
-    /* Sections */
-    section.block {
-      padding: 4.5rem 0;
+    .prog-specs {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.5rem;
+      padding-top: 0.9rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--navy);
     }
 
-    .section-head {
-      max-width: 62ch;
-      margin-bottom: 2.5rem;
+    /* Why AIU & Leadership Section */
+    .distinction {
+      background: var(--surface-warm);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
     }
 
-    .section-head h2 {
-      font-size: clamp(1.85rem, 3vw, 2.5rem);
-      margin-bottom: 0.65rem;
+    .distinction-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 3rem;
+      align-items: center;
     }
 
-    .section-head p {
+    .leader-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .leader-card img {
+      width: 100%;
+      height: 270px;
+      object-fit: cover;
+    }
+
+    .leader-body {
+      padding: 1.75rem;
+    }
+
+    .leader-quote {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.32rem;
+      font-style: italic;
+      color: var(--navy);
+      line-height: 1.4;
+      margin-bottom: 1.15rem;
+    }
+
+    .leader-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .leader-meta strong {
+      display: block;
+      font-size: 0.95rem;
+      color: var(--navy);
+    }
+
+    .leader-meta span {
+      font-size: 0.82rem;
       color: var(--muted);
     }
 
-    /* Filter bar */
-    .filter-row {
+    .crest-pill {
+      padding: 0.35rem 0.75rem;
+      border-radius: 6px;
+      background: var(--navy);
+      color: #f3d08a;
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .pillars {
+      display: grid;
+      gap: 1.35rem;
+      margin-top: 1.75rem;
+    }
+
+    .pillar-row {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 1rem;
+      align-items: start;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+    }
+
+    .roman-num {
+      width: 42px;
+      height: 42px;
+      border-radius: 9px;
+      background: var(--navy);
+      color: #f3d08a;
+      display: grid;
+      place-items: center;
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+
+    .pillar-row h3 {
+      font-size: 1.35rem;
+      color: var(--navy);
+      margin-bottom: 0.25rem;
+    }
+
+    .pillar-row p {
+      font-size: 0.89rem;
+      color: var(--muted);
+    }
+
+    /* Admissions Banner */
+    .admissions-box {
+      background: linear-gradient(135deg, var(--navy) 0%, #193152 100%);
+      color: #ffffff;
+      border-radius: 20px;
+      padding: 3.25rem;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .admissions-top {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1.75rem;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 1.5rem;
+      padding-bottom: 2.25rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+      margin-bottom: 2.25rem;
     }
 
-    .filter-btn {
-      padding: 0.5rem 1rem;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      color: var(--muted);
-      font-size: 0.86rem;
-      font-weight: 500;
-      cursor: pointer;
+    .admissions-top h2 {
+      font-size: clamp(2rem, 3.2vw, 2.75rem);
+      color: #ffffff;
+      margin-top: 0.4rem;
     }
 
-    .filter-btn.active,
-    .filter-btn:hover {
-      background: var(--accent);
-      color: #fff;
-      border-color: var(--accent);
+    .admissions-top p {
+      color: #cbd5e1;
+      max-width: 54ch;
+      margin-top: 0.6rem;
+      font-size: 0.95rem;
     }
 
-    .programs-grid {
+    .btn-gold {
+      background: #dfb05c;
+      color: var(--navy);
+    }
+
+    .btn-gold:hover {
+      background: #e8be72;
+    }
+
+    .steps-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1.5rem;
     }
 
-    .program-card {
+    .step-card {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+
+    .step-num {
+      display: inline-block;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #f3d08a;
+      margin-bottom: 0.45rem;
+    }
+
+    .step-card h3 {
+      font-size: 1.35rem;
+      color: #ffffff;
+      margin-bottom: 0.4rem;
+    }
+
+    .step-card p {
+      font-size: 0.88rem;
+      color: #cbd5e1;
+    }
+
+    /* Insights & Blogs */
+    .insights-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 2rem;
+    }
+
+    .featured-article {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.6rem;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .featured-article img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .article-body {
+      padding: 1.75rem;
+    }
+
+    .article-meta {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.5rem;
+    }
+
+    .article-body h3 {
+      font-size: 1.65rem;
+      color: var(--navy);
+      margin-bottom: 0.65rem;
+    }
+
+    .article-body p {
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    .side-articles {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.75rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       gap: 1.25rem;
     }
 
-    .program-meta {
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--gold);
+    .side-articles h3 {
+      font-size: 1.5rem;
+      color: var(--navy);
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .mini-post {
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .mini-post:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .mini-post span {
+      font-size: 0.74rem;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 0.45rem;
-    }
-
-    .program-card h3 {
-      font-size: 1.35rem;
-      margin-bottom: 0.6rem;
-    }
-
-    .program-card p {
-      font-size: 0.92rem;
-      color: var(--muted);
-    }
-
-    .program-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-top: 1rem;
-      border-top: 1px solid var(--border);
-      font-size: 0.84rem;
-      color: var(--muted);
-    }
-
-    /* Two-column feature (Leadership & Accreditation) */
-    .split-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2.5rem;
-      align-items: start;
-    }
-
-    .panel {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 2rem;
-    }
-
-    .quote-mark {
-      font-family: "Newsreader", serif;
-      font-size: 2.5rem;
-      line-height: 1;
+      letter-spacing: 0.06em;
       color: var(--gold);
-      margin-bottom: 0.5rem;
     }
 
-    .quote-text {
-      font-size: 1rem;
-      color: var(--ink);
-      margin-bottom: 1.25rem;
-    }
-
-    .leader-name {
-      font-weight: 600;
-      font-size: 0.95rem;
-    }
-
-    .leader-role {
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
-
-    .info-list {
-      list-style: none;
-      display: grid;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-
-    .info-list li {
-      padding: 1rem 1.15rem;
-      background: var(--surface-alt);
-      border-radius: 8px;
-      font-size: 0.92rem;
-    }
-
-    .info-list strong {
-      display: block;
-      margin-bottom: 0.2rem;
-      color: var(--ink);
-    }
-
-    .info-list span {
-      color: var(--muted);
-      font-size: 0.88rem;
-    }
-
-    /* Support & Admissions */
-    .pillars-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-    }
-
-    .pillar {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.5rem;
-    }
-
-    .pillar h3 {
+    .mini-post h4 {
+      font-family: "Cormorant Garamond", serif;
       font-size: 1.25rem;
-      margin-bottom: 0.45rem;
+      color: var(--navy);
+      margin: 0.25rem 0;
     }
 
-    .pillar p {
-      font-size: 0.9rem;
+    .mini-post p {
+      font-size: 0.84rem;
       color: var(--muted);
     }
 
     /* Footer */
     footer {
-      background: var(--ink);
-      color: #d7dee8;
-      padding: 3.5rem 0 2rem;
-      margin-top: 2rem;
+      background: var(--navy);
+      color: #cbd5e1;
+      padding: 4rem 0 2rem;
     }
 
     .footer-grid {
       display: grid;
-      grid-template-columns: 1.3fr 1fr 1fr;
-      gap: 2.5rem;
-      padding-bottom: 2.5rem;
+      grid-template-columns: 1.35fr 1fr 1fr 1.15fr;
+      gap: 2.25rem;
+      padding-bottom: 2.75rem;
       border-bottom: 1px solid rgba(255, 255, 255, 0.12);
     }
 
     footer h4 {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: #fff;
-      margin-bottom: 0.9rem;
+      letter-spacing: 0.1em;
+      color: #f3d08a;
+      margin-bottom: 1rem;
     }
 
     footer ul {
       list-style: none;
       display: grid;
-      gap: 0.5rem;
+      gap: 0.6rem;
       font-size: 0.88rem;
-      color: #bcc6d4;
     }
 
     footer a:hover {
-      color: #fff;
+      color: #ffffff;
+    }
+
+    .footer-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.15rem;
+    }
+
+    .footer-badges span {
+      font-size: 0.75rem;
+      padding: 0.3rem 0.65rem;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      color: #e2e8f0;
     }
 
     .footer-bottom {
@@ -529,139 +940,169 @@
       flex-wrap: wrap;
       justify-content: space-between;
       gap: 1rem;
-      padding-top: 1.5rem;
+      padding-top: 1.65rem;
       font-size: 0.82rem;
-      color: #9aa6b8;
+      color: #94a3b8;
     }
 
-    /* Drawer */
-    .drawer-backdrop {
+    .footer-legal {
+      display: flex;
+      gap: 1.25rem;
+    }
+
+    /* Slide-Over Inquiry Drawer */
+    .overlay {
       position: fixed;
       inset: 0;
-      background: rgba(15, 23, 42, 0.45);
-      display: none;
-      z-index: 50;
+      background: rgba(16, 33, 56, 0.5);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+      z-index: 60;
     }
 
-    .drawer-backdrop.open {
-      display: block;
+    .overlay.open {
+      opacity: 1;
+      pointer-events: auto;
     }
 
     .drawer {
       position: fixed;
       top: 0;
-      right: -420px;
-      width: min(100%, 420px);
+      right: -440px;
+      width: min(100%, 440px);
       height: 100%;
       background: var(--surface);
-      z-index: 60;
-      padding: 2rem 1.6rem;
-      transition: right 0.25s ease;
+      z-index: 70;
+      padding: 2rem 1.75rem;
+      transition: right 0.28s ease;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      box-shadow: -12px 0 32px rgba(0, 0, 0, 0.14);
+      box-shadow: -16px 0 40px rgba(16, 33, 56, 0.18);
     }
 
     .drawer.open {
       right: 0;
     }
 
-    .drawer h3 {
-      font-size: 1.5rem;
-      margin-bottom: 0.4rem;
+    .drawer-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-bottom: 1.15rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 1.35rem;
     }
 
-    .drawer p {
-      font-size: 0.9rem;
-      color: var(--muted);
-      margin-bottom: 1.25rem;
+    .drawer-head span {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gold);
     }
 
-    .field {
-      margin-bottom: 0.95rem;
+    .drawer-head h3 {
+      font-size: 1.7rem;
+      color: var(--navy);
     }
 
-    .field label {
-      display: block;
-      font-size: 0.83rem;
+    .drawer-close {
+      background: var(--surface-warm);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.4rem 0.7rem;
+      font-size: 0.84rem;
       font-weight: 600;
+      cursor: pointer;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--navy);
       margin-bottom: 0.35rem;
     }
 
-    .field input,
-    .field select {
+    .form-group input,
+    .form-group select {
       width: 100%;
-      padding: 0.65rem 0.75rem;
+      padding: 0.68rem 0.8rem;
       border: 1px solid var(--border);
       border-radius: 8px;
       font-family: inherit;
       font-size: 0.9rem;
+      background: var(--bg);
     }
 
-    .drawer-top-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1rem;
-    }
-
-    .close-btn {
-      background: var(--surface-alt);
-      border: none;
-      border-radius: 6px;
-      padding: 0.35rem 0.65rem;
-      cursor: pointer;
-      font-size: 0.9rem;
-    }
-
-    .confirm-msg {
+    .drawer-note {
       display: none;
-      margin-top: 0.85rem;
-      padding: 0.75rem;
+      margin-top: 1rem;
+      padding: 0.85rem;
       border-radius: 8px;
-      background: var(--accent-soft);
-      color: var(--ink);
-      font-size: 0.86rem;
+      background: var(--gold-light);
+      color: #6b4710;
+      font-size: 0.84rem;
     }
 
-    /* Responsive */
-    @media (max-width: 900px) {
+    .drawer-foot {
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .drawer-foot strong {
+      color: var(--navy);
+    }
+
+    /* Responsive Breakpoints */
+    @media (max-width: 980px) {
       .hero-grid,
-      .split-grid,
-      .programs-grid,
-      .pillars-grid {
+      .distinction-grid,
+      .insights-grid {
         grid-template-columns: 1fr;
       }
 
-      .highlights-grid {
+      .pathways-grid,
+      .programs-list,
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .metrics-grid {
         grid-template-columns: repeat(2, 1fr);
       }
 
       .footer-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
       }
 
-      nav,
-      .nav-actions {
+      nav.desktop-nav,
+      .nav-cta {
         display: none;
       }
 
-      nav.mobile-open,
-      .nav-actions.mobile-open {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        width: 100%;
-        padding: 1rem 0;
-      }
-
-      .nav-wrap {
-        flex-wrap: wrap;
-      }
-
-      .menu-toggle {
+      .mobile-btn {
         display: inline-block;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .metrics-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .admissions-box {
+        padding: 2rem 1.4rem;
       }
     }
   </style>
@@ -669,37 +1110,53 @@
 <body>
   <div class="topbar">
     <div class="container topbar-inner">
-      <span>Where Boundaries Dissolve, Excellence Evolves.</span>
+      <div class="topbar-tag">
+        <span class="pulse-dot"></span>
+        <span>Where Boundaries Dissolve, Excellence Evolves &bull; Orlando, Florida</span>
+      </div>
       <div class="topbar-links">
         <a href="#programs">Programs</a>
-        <a href="#admissions">Admissions</a>
+        <a href="#support">Student Support</a>
+        <a href="#insights">Insights</a>
         <a href="#contact">Contact Us</a>
       </div>
     </div>
   </div>
 
   <header>
-    <div class="container nav-wrap">
+    <div class="container nav-bar">
       <a href="#" class="brand">
-        <div class="brand-mark">AIU</div>
-        <div class="brand-text">
+        <div class="crest">AIU</div>
+        <div class="brand-name">
           <span>American Imperial</span>
           <span>University</span>
         </div>
       </a>
 
-      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Toggle navigation">Menu</button>
-
-      <nav id="mainNav">
+      <nav class="desktop-nav">
         <a href="#programs">Programs</a>
-        <a href="#about">About Us</a>
-        <a href="#support">Student Support</a>
         <a href="#admissions">Admissions</a>
-        <a href="#contact">Contact Us</a>
+        <a href="#why-aiu">About Us</a>
+        <a href="#support">Student Support</a>
+        <a href="#insights">Blogs</a>
       </nav>
 
-      <div class="nav-actions" id="navActions">
-        <button class="btn btn-ghost" type="button" data-open-drawer>Request Info</button>
+      <div class="nav-cta">
+        <button class="btn btn-outline" type="button" data-drawer-open>Request Info</button>
+        <a class="btn btn-primary" href="#admissions">Apply Now</a>
+      </div>
+
+      <button class="mobile-btn" id="mobileToggle" type="button" aria-expanded="false">Menu</button>
+    </div>
+
+    <div class="container mobile-drawer" id="mobileMenu">
+      <a href="#programs">Programs</a>
+      <a href="#admissions">Admissions</a>
+      <a href="#why-aiu">About Us</a>
+      <a href="#support">Student Support</a>
+      <a href="#insights">Blogs</a>
+      <div style="display: flex; gap: 0.75rem; padding-top: 0.5rem;">
+        <button class="btn btn-outline" type="button" data-drawer-open>Request Info</button>
         <a class="btn btn-primary" href="#admissions">Apply Now</a>
       </div>
     </div>
@@ -707,165 +1164,290 @@
 
   <main>
     <section class="hero">
+      <div class="hero-glow"></div>
       <div class="container hero-grid">
         <div>
-          <span class="eyebrow">Florida Higher Education &bull; Flexible Online &amp; Career Degrees</span>
+          <div class="pill-badge">
+            <span>QAHE Accredited &bull; 28th ELETS Award Winner</span>
+          </div>
           <h1>Empowering Your Academic Journey</h1>
-          <p>
-            From practical curriculum to faculty mentorship, American Imperial University is built for working professionals and ambitious learners aiming for leadership and career growth.
+          <p class="hero-lead">
+            From top-tier digital resources to dedicated faculty mentorship, American Imperial University delivers accredited American degree programs built for working leaders worldwide.
           </p>
-          <div class="hero-cta">
+          <div class="hero-actions">
             <a class="btn btn-primary" href="#programs">Explore Programs</a>
-            <button class="btn btn-ghost" type="button" data-open-drawer>Speak with Admissions</button>
+            <button class="btn btn-outline" type="button" data-drawer-open>Speak With Admissions</button>
           </div>
-          <div class="hero-notes">
-            <span>20+ Years of Leadership &amp; Experience</span>
-            <span>QAHE Accredited &bull; ELETS Award Winner</span>
+          <div class="hero-trust">
+            <span><i class="check-dot">&#10003;</i> 20+ Years of Educational Leadership</span>
+            <span><i class="check-dot">&#10003;</i> Flexible Online &amp; Fast-Track Options</span>
           </div>
         </div>
 
-        <div class="hero-card">
+        <div class="hero-visual">
+          <div class="hero-frame">
+            <img
+              src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1000&q=85"
+              alt="American Imperial University Academic Excellence"
+            />
+            <div class="hero-caption">
+              <p>Florida&rsquo;s #1 Ranked Education Environment</p>
+              <p>Based in Orlando, Florida—connecting global professionals with accredited doctoral and master&rsquo;s pathways.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Institutional Highlights">
+      <div class="container metrics-grid">
+        <div class="metric-item">
+          <div class="metric-val">20+ Years</div>
+          <div class="metric-desc">Visionary Leadership &amp; Academic Expertise</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-val">65 Credits</div>
+          <div class="metric-desc">DBA Strategic Leadership (36 Mos / Fast-Track)</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-val">41 Credits</div>
+          <div class="metric-desc">MBA Int. Business &amp; MS Data Analytics (18 Mos)</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-val">#1 State</div>
+          <div class="metric-desc">Florida Education Ranking (US News / Heritage)</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="programs">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">Academic Excellence</span>
+          <h2>Pathways Built for Career &amp; Executive Impact</h2>
+          <p>Explore degree programs designed around mentorship, industry-relevant coursework, and flexible scheduling.</p>
+        </div>
+
+        <div class="pathways-grid">
+          <div class="pathway-card">
+            <span class="pathway-tag">Doctoral Pathway</span>
+            <h3>Doctor of Business Administration</h3>
+            <p>Ranked among leading online professional DBA programs for executives transitioning from management to boardroom leadership.</p>
+            <ul class="pathway-list">
+              <li>65 US Credit Hours</li>
+              <li>36 Months with Fast-Track Option</li>
+              <li>Research Buddy &amp; Faculty Mentorship</li>
+            </ul>
+          </div>
+
+          <div class="pathway-card">
+            <span class="pathway-tag">Graduate Business</span>
+            <h3>MBA in International Business</h3>
+            <p>Master global strategy, cross-border operations, and executive decision-making for competitive international markets.</p>
+            <ul class="pathway-list">
+              <li>41 US Credit Hours</li>
+              <li>18-Month Accelerated Structure</li>
+              <li>Global Networking &amp; Case Seminars</li>
+            </ul>
+          </div>
+
+          <div class="pathway-card">
+            <span class="pathway-tag">Data &amp; Technology</span>
+            <h3>MS in Data Analytics</h3>
+            <p>Transform raw enterprise data into strategic insight with applied analytics designed for high-growth leadership roles.</p>
+            <ul class="pathway-list">
+              <li>41 US Credit Hours</li>
+              <li>18-Month Practical Curriculum</li>
+              <li>Industry-Aligned Analytical Tools</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="catalog-box">
+          <div class="catalog-top">
+            <div>
+              <h3>Featured Degree Programs</h3>
+              <p>Filter across AIU&rsquo;s flagship degree tracks.</p>
+            </div>
+            <div class="tabs" role="tablist" aria-label="Program Filter">
+              <button class="tab-btn active" type="button" data-filter="all">All Programs</button>
+              <button class="tab-btn" type="button" data-filter="doctoral">Doctoral</button>
+              <button class="tab-btn" type="button" data-filter="business">Business</button>
+              <button class="tab-btn" type="button" data-filter="analytics">Data Analytics</button>
+            </div>
+          </div>
+
+          <div class="programs-list" id="programCatalog">
+            <article class="prog-card" data-tags="doctoral business">
+              <div>
+                <div class="prog-level">Doctoral &bull; Strategic Leadership</div>
+                <h4>Doctor of Business Administration in Strategic Leadership</h4>
+                <p>Bridges academic rigor and executive boardroom strategy for experienced leaders.</p>
+              </div>
+              <div class="prog-specs">
+                <span>65 US Credit Hours</span>
+                <span>36 Mos (Fast-Track)</span>
+              </div>
+            </article>
+
+            <article class="prog-card" data-tags="business">
+              <div>
+                <div class="prog-level">Master&rsquo;s &bull; Global Management</div>
+                <h4>Master of Business Administration in International Business</h4>
+                <p>Equips mid-career professionals to lead cross-border teams and global operations.</p>
+              </div>
+              <div class="prog-specs">
+                <span>41 US Credit Hours</span>
+                <span>18 Months</span>
+              </div>
+            </article>
+
+            <article class="prog-card" data-tags="analytics">
+              <div>
+                <div class="prog-level">Master&rsquo;s &bull; Applied Data</div>
+                <h4>Master of Science in Data Analytics</h4>
+                <p>Develops quantitative modeling and business intelligence skills for data-driven roles.</p>
+              </div>
+              <div class="prog-specs">
+                <span>41 US Credit Hours</span>
+                <span>18 Months</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section distinction" id="why-aiu">
+      <div class="container distinction-grid">
+        <div class="leader-card">
           <img
-            src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1000&q=80"
-            alt="Graduate students collaborating on coursework"
+            src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=900&q=85"
+            alt="American Imperial University Academic Standards"
           />
-          <div class="hero-card-body">
-            <p>Doctor &amp; Master Pathways</p>
-            <p>Structured credit hours and flexible pacing designed around real-world schedules.</p>
+          <div class="leader-body">
+            <span class="section-kicker">Message from Leadership</span>
+            <p class="leader-quote">
+              &ldquo;Our unwavering commitment to excellence propels us to provide unparalleled access to distinguished American higher education programs, empowering ambitious learners worldwide.&rdquo;
+            </p>
+            <div class="leader-meta">
+              <div>
+                <strong>Michael Santoro</strong>
+                <span>Campus President, American Imperial University</span>
+              </div>
+              <div class="crest-pill">AIU</div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="section-header" style="margin-bottom: 1.25rem;">
+            <span class="section-kicker">The AIU Edge</span>
+            <h2>Accredited Excellence &amp; Student Support</h2>
+            <p>Combining recognized international accreditation with responsive faculty and career support.</p>
+          </div>
+
+          <div class="pillars" id="support">
+            <div class="pillar-row">
+              <div class="roman-num">I</div>
+              <div>
+                <h3>QAHE &amp; American Accreditation Association</h3>
+                <p>Fully accredited by QAHE and recognized by the American Accreditation Association (Certificates MP24118 &amp; MP25141).</p>
+              </div>
+            </div>
+
+            <div class="pillar-row">
+              <div class="roman-num">II</div>
+              <div>
+                <h3>28th ELETS World Education Award</h3>
+                <p>Honored as Best Online Degree Provider for flexible digital learning and accessible academic delivery.</p>
+              </div>
+            </div>
+
+            <div class="pillar-row">
+              <div class="roman-num">III</div>
+              <div>
+                <h3>Mentorship, Research Buddy &amp; Career Counseling</h3>
+                <p>Robust academic and technical support, faculty guidance at the click of a button, and dedicated career counseling.</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="highlights" aria-label="Key Highlights">
-      <div class="container highlights-grid">
-        <div>
-          <div class="stat-num">20+ Yrs</div>
-          <div class="stat-label">Leadership &amp; Educational Expertise</div>
-        </div>
-        <div>
-          <div class="stat-num">65 Credits</div>
-          <div class="stat-label">DBA Strategic Leadership (36 mos / fast-track)</div>
-        </div>
-        <div>
-          <div class="stat-num">41 Credits</div>
-          <div class="stat-label">MBA Int. Business &amp; MS Data Analytics (18 mos)</div>
-        </div>
-        <div>
-          <div class="stat-num">#1 State</div>
-          <div class="stat-label">Florida Education Rankings (US News / Heritage)</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="block" id="programs">
+    <section class="section" id="admissions">
       <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">Academic Offerings</span>
-          <h2>Featured Degree Programs</h2>
-          <p>Browse core doctoral, master’s, and business tracks offered by American Imperial University.</p>
-        </div>
-
-        <div class="filter-row" role="tablist" aria-label="Filter programs">
-          <button class="filter-btn active" type="button" data-filter="all">All Programs</button>
-          <button class="filter-btn" type="button" data-filter="doctoral">Doctoral</button>
-          <button class="filter-btn" type="button" data-filter="business">Business &amp; Leadership</button>
-          <button class="filter-btn" type="button" data-filter="analytics">Analytics</button>
-        </div>
-
-        <div class="programs-grid" id="programsGrid">
-          <article class="program-card" data-category="doctoral business">
+        <div class="admissions-box">
+          <div class="admissions-top">
             <div>
-              <div class="program-meta">Doctoral &bull; Strategic Leadership</div>
-              <h3>Doctor of Business Administration in Strategic Leadership</h3>
-              <p>Designed for senior professionals and leaders bridging academic research with executive decision-making.</p>
+              <span class="section-kicker" style="color: #f3d08a;">Admissions &amp; Enrollment</span>
+              <h2>Launch Your Academic Journey at AIU</h2>
+              <p>Dedicated admissions advisors support you throughout every stage of your application, credential review, and enrollment.</p>
             </div>
-            <div class="program-footer">
-              <span>65 US Credit Hours</span>
-              <span>36 Months (Fast-Track Option)</span>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+              <button class="btn btn-gold" type="button" data-drawer-open>Request Admission Guide</button>
+              <a class="btn btn-outline" style="background: transparent; color: #fff; border-color: rgba(255,255,255,0.28);" href="#programs">View Programs</a>
             </div>
-          </article>
+          </div>
 
-          <article class="program-card" data-category="business">
-            <div>
-              <div class="program-meta">Master’s &bull; International Business</div>
-              <h3>Master of Business Administration in International Business</h3>
-              <p>Focused on global strategy, cross-border operations, and management skills for international markets.</p>
+          <div class="steps-grid">
+            <div class="step-card">
+              <span class="step-num">01</span>
+              <h3>Explore Requirements</h3>
+              <p>Connect with an advisor to review program credit hours, fast-track options, and admission criteria.</p>
             </div>
-            <div class="program-footer">
-              <span>41 US Credit Hours</span>
-              <span>18 Months</span>
+            <div class="step-card">
+              <span class="step-num">02</span>
+              <h3>Submit Application</h3>
+              <p>Complete your application dossier with personalized step-by-step support from our admissions team.</p>
             </div>
-          </article>
-
-          <article class="program-card" data-category="analytics">
-            <div>
-              <div class="program-meta">Master’s &bull; Data Analytics</div>
-              <h3>Master of Science in Data Analytics</h3>
-              <p>Builds practical analytical and data-driven decision skills for modern organizations and high-growth roles.</p>
+            <div class="step-card">
+              <span class="step-num">03</span>
+              <h3>Begin Flexible Study</h3>
+              <p>Access our LMS platform, faculty mentorship, and global peer community on your schedule.</p>
             </div>
-            <div class="program-footer">
-              <span>41 US Credit Hours</span>
-              <span>18 Months</span>
-            </div>
-          </article>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="block" id="about">
-      <div class="container split-grid">
-        <div class="panel">
-          <span class="eyebrow">Message from Leadership</span>
-          <div class="quote-mark">&ldquo;</div>
-          <p class="quote-text">
-            Welcome to American Imperial University. Our focus is providing accessible American higher education programs that help ambitious learners grow professionally and make a lasting impact in their fields.
-          </p>
-          <div class="leader-name">Michael Santoro</div>
-          <div class="leader-role">Campus President, American Imperial University</div>
-        </div>
-
-        <div class="panel">
-          <span class="eyebrow">Recognition &amp; Standards</span>
-          <h3>Accreditation &amp; Awards</h3>
-          <ul class="info-list">
-            <li>
-              <strong>QAHE Accreditation</strong>
-              <span>Recognized institutional quality assurance standards.</span>
-            </li>
-            <li>
-              <strong>American Accreditation Association</strong>
-              <span>Member recognition and institutional alignment.</span>
-            </li>
-            <li>
-              <strong>28th ELETS World Education Award</strong>
-              <span>Recognized for Best Online Degree Provider.</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="block" id="support">
+    <section class="section" id="insights" style="padding-top: 1rem;">
       <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">Learner Experience</span>
-          <h2>Student Support &amp; Admissions</h2>
-          <p>Clear guidance from your first inquiry through graduation, backed by dedicated student services.</p>
+        <div class="section-header">
+          <span class="section-kicker">Academic Insights</span>
+          <h2>Perspectives &amp; University Blogs</h2>
         </div>
 
-        <div class="pillars-grid" id="admissions">
-          <div class="pillar">
-            <h3>1. Program &amp; Admission Guidance</h3>
-            <p>Review entry requirements and connect with admissions advisors to pick the right degree track.</p>
-          </div>
-          <div class="pillar">
-            <h3>2. Faculty &amp; Academic Support</h3>
-            <p>Get accessible faculty guidance, mentorship, and career counseling throughout your studies.</p>
-          </div>
-          <div class="pillar">
-            <h3>3. Flexible Learning Format</h3>
-            <p>Study around work and life commitments with structured coursework and digital resources.</p>
+        <div class="insights-grid">
+          <article class="featured-article">
+            <img
+              src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1000&q=85"
+              alt="Executive Leadership and DBA Research"
+            />
+            <div class="article-body">
+              <div class="article-meta">Executive Leadership &bull; Featured Insight</div>
+              <h3>Bridging the Gap Between Academia and the Boardroom with a DBA</h3>
+              <p>How senior managers build on an MBA with applied doctoral research to step into executive strategy and board advisory roles.</p>
+            </div>
+          </article>
+
+          <div class="side-articles">
+            <h3>Recent Articles</h3>
+
+            <div class="mini-post">
+              <span>Data &amp; Careers</span>
+              <h4>Data is the New Oil: How an MS in Analytics Positions You for Top Roles</h4>
+              <p>Why organizations rely on trained analytics leaders to turn raw operational data into competitive advantage.</p>
+            </div>
+
+            <div class="mini-post">
+              <span>Global Business</span>
+              <h4>Why 2026 is the Right Time for an MBA in International Business</h4>
+              <p>Navigating cross-border markets, supply chains, and global leadership opportunities with an accelerated MBA.</p>
+            </div>
+
+            <button class="btn btn-outline" type="button" data-drawer-open style="width: 100%;">Connect With An Advisor</button>
           </div>
         </div>
       </div>
@@ -877,18 +1459,33 @@
       <div class="footer-grid">
         <div>
           <h4>American Imperial University</h4>
-          <p style="font-size: 0.88rem; color: #bcc6d4; max-width: 34ch;">
-            Where Boundaries Dissolve, Excellence Evolves. Supporting learners across doctoral, master’s, and career-focused programs.
+          <p style="font-size: 0.88rem; line-height: 1.65;">
+            Where Boundaries Dissolve, Excellence Evolves. Delivering accredited American doctoral and master&rsquo;s programs from Orlando, Florida.
           </p>
+          <div class="footer-badges">
+            <span>QAHE Accredited</span>
+            <span>AAA Member</span>
+            <span>ELETS Award Winner</span>
+          </div>
         </div>
 
         <div>
           <h4>Quick Links</h4>
           <ul>
-            <li><a href="#programs">Programs</a></li>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#support">Student Support</a></li>
+            <li><a href="#programs">Academics &amp; Programs</a></li>
             <li><a href="#admissions">Admissions</a></li>
+            <li><a href="#support">Student Support</a></li>
+            <li><a href="#why-aiu">About Us</a></li>
+            <li><a href="#insights">Blogs</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Flagship Degrees</h4>
+          <ul>
+            <li><a href="#programs">DBA Strategic Leadership</a></li>
+            <li><a href="#programs">MBA International Business</a></li>
+            <li><a href="#programs">MS Data Analytics</a></li>
           </ul>
         </div>
 
@@ -903,99 +1500,102 @@
       </div>
 
       <div class="footer-bottom">
-        <span>&copy; 2026 American Imperial University. All rights reserved.</span>
-        <span>Orlando, Florida</span>
+        <p>&copy; 2026 All Rights Reserved by American Imperial University.</p>
+        <div class="footer-legal">
+          <a href="#contact">Terms &amp; Conditions</a>
+          <a href="#contact">Privacy Policy</a>
+        </div>
       </div>
     </div>
   </footer>
 
-  <div class="drawer-backdrop" id="drawerBackdrop"></div>
-  <aside class="drawer" id="infoDrawer" aria-label="Request Information">
+  <div class="overlay" id="drawerOverlay"></div>
+  <aside class="drawer" id="inquiryDrawer" aria-hidden="true">
     <div>
-      <div class="drawer-top-bar">
-        <span class="eyebrow" style="margin: 0;">Admissions Inquiry</span>
-        <button class="close-btn" id="closeDrawer" type="button">Close</button>
+      <div class="drawer-head">
+        <div>
+          <span>American Imperial University</span>
+          <h3>Request Information</h3>
+        </div>
+        <button class="drawer-close" id="drawerClose" type="button">Close</button>
       </div>
-      <h3>Request Program Details</h3>
-      <p>Share your details to view program information or connect with admissions.</p>
 
-      <form id="inquiryForm">
-        <div class="field">
-          <label for="fullName">Full Name</label>
-          <input id="fullName" type="text" placeholder="Your name" required />
+      <form id="drawerForm">
+        <div class="form-group">
+          <label for="studentName">Full Name</label>
+          <input id="studentName" type="text" placeholder="Enter your full name" required />
         </div>
-        <div class="field">
-          <label for="emailInput">Email Address</label>
-          <input id="emailInput" type="email" placeholder="you@example.com" required />
+        <div class="form-group">
+          <label for="studentEmail">Email Address</label>
+          <input id="studentEmail" type="email" placeholder="you@example.com" required />
         </div>
-        <div class="field">
-          <label for="programSelect">Program of Interest</label>
-          <select id="programSelect">
-            <option>DBA in Strategic Leadership (65 Credits)</option>
-            <option>MBA in International Business (41 Credits)</option>
-            <option>MS in Data Analytics (41 Credits)</option>
+        <div class="form-group">
+          <label for="studentProgram">Program of Interest</label>
+          <select id="studentProgram">
+            <option>DBA in Strategic Leadership (65 US Credits)</option>
+            <option>MBA in International Business (41 US Credits)</option>
+            <option>MS in Data Analytics (41 US Credits)</option>
           </select>
         </div>
-        <button class="btn btn-primary" style="width: 100%;" type="submit">Submit Request</button>
+        <button class="btn btn-primary" type="submit" style="width: 100%;">Submit Inquiry</button>
       </form>
 
-      <div class="confirm-msg" id="confirmMsg">
-        Request preview noted. For direct assistance, reach out to admissions@americanimperialuniversity.com or call +1 (407) 270-3706.
+      <div class="drawer-note" id="drawerNote">
+        Thank you. For immediate admissions assistance, email admissions@americanimperialuniversity.com or call +1 (407) 270-3706.
       </div>
     </div>
 
-    <div style="font-size: 0.8rem; color: var(--muted);">
-      2100 S. Hiawassee Rd., Orlando, FL 32835 &bull; +1 (407) 270-3706
+    <div class="drawer-foot">
+      2100 S. Hiawassee Rd., Orlando, FL 32835 &bull; Direct Desk: <strong>+1 (407) 270-3706</strong>
     </div>
   </aside>
 
   <script>
-    const menuToggle = document.getElementById("menuToggle");
-    const mainNav = document.getElementById("mainNav");
-    const navActions = document.getElementById("navActions");
+    const mobileToggle = document.getElementById("mobileToggle");
+    const mobileMenu = document.getElementById("mobileMenu");
 
-    menuToggle.addEventListener("click", () => {
-      mainNav.classList.toggle("mobile-open");
-      navActions.classList.toggle("mobile-open");
+    mobileToggle.addEventListener("click", () => {
+      const isOpen = mobileMenu.classList.toggle("open");
+      mobileToggle.setAttribute("aria-expanded", String(isOpen));
     });
 
-    const filterButtons = document.querySelectorAll(".filter-btn");
-    const programCards = document.querySelectorAll(".program-card");
+    const tabButtons = document.querySelectorAll(".tab-btn");
+    const cards = document.querySelectorAll(".prog-card");
 
-    filterButtons.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        filterButtons.forEach((b) => b.classList.remove("active"));
-        btn.classList.add("active");
+    tabButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        tabButtons.forEach((btn) => btn.classList.remove("active"));
+        button.classList.add("active");
 
-        const selected = btn.dataset.filter;
-        programCards.forEach((card) => {
-          const categories = card.dataset.category.split(" ");
-          const show = selected === "all" || categories.includes(selected);
-          card.style.display = show ? "flex" : "none";
+        const filter = button.dataset.filter;
+        cards.forEach((card) => {
+          const tags = card.dataset.tags.split(" ");
+          card.style.display = filter === "all" || tags.includes(filter) ? "flex" : "none";
         });
       });
     });
 
-    const drawer = document.getElementById("infoDrawer");
-    const backdrop = document.getElementById("drawerBackdrop");
-    const openBtns = document.querySelectorAll("[data-open-drawer]");
-    const closeBtn = document.getElementById("closeDrawer");
-    const form = document.getElementById("inquiryForm");
-    const confirmMsg = document.getElementById("confirmMsg");
+    const drawer = document.getElementById("inquiryDrawer");
+    const overlay = document.getElementById("drawerOverlay");
+    const openTriggers = document.querySelectorAll("[data-drawer-open]");
+    const closeTrigger = document.getElementById("drawerClose");
+    const drawerForm = document.getElementById("drawerForm");
+    const drawerNote = document.getElementById("drawerNote");
 
-    function toggleDrawer(open) {
-      drawer.classList.toggle("open", open);
-      backdrop.classList.toggle("open", open);
+    function setDrawer(state) {
+      drawer.classList.toggle("open", state);
+      overlay.classList.toggle("open", state);
+      drawer.setAttribute("aria-hidden", String(!state));
     }
 
-    openBtns.forEach((btn) => btn.addEventListener("click", () => toggleDrawer(true)));
-    closeBtn.addEventListener("click", () => toggleDrawer(false));
-    backdrop.addEventListener("click", () => toggleDrawer(false));
+    openTriggers.forEach((el) => el.addEventListener("click", () => setDrawer(true)));
+    closeTrigger.addEventListener("click", () => setDrawer(false));
+    overlay.addEventListener("click", () => setDrawer(false));
 
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      confirmMsg.style.display = "block";
-      form.reset();
+    drawerForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      drawerNote.style.display = "block";
+      drawerForm.reset();
     });
   </script>
 </body>
